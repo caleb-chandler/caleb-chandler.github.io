@@ -3,6 +3,5 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: page
-title: Caleb Chandler
 ---
-description placeholder
+Welcome! I am a researcher, data analyst, and graduate student at Northeastern University studying networks and complex systems. 
