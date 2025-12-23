@@ -17,11 +17,11 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 # Site Settings
 locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Site Title"
+title                    : "Caleb Chandler"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "Caleb Chandler"
+description              : # "An amazing website."
 url                      : "https://caleb-chandler.github.io"
 baseurl                  : ""
 repository               : "caleb-chandler/caleb-chandler.github.io"
