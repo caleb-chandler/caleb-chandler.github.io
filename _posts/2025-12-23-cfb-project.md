@@ -1,4 +1,4 @@
 ---
 layout: single
-title: "The Transfer Portal: Visualized"
+title: "CFB Recruiting: Visualized"
 ---
