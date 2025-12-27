@@ -114,8 +114,8 @@ analytics:
 # Site Author
 author:
   name             : "Caleb Chandler"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : # ""
+  avatar           : "C:\\Users\\User\\Documents\\resumes + cvs\\thumbnail_Caleb.jpg)"
+  bio              : "Grad student and researcher studying complex systems and social evolution."
   location         : "Boston, MA"
   email            :
   links:
