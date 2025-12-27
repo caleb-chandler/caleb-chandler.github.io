@@ -8,5 +8,5 @@ I am a researcher, data analyst, and graduate student at Northeastern University
 
 When I'm not engaged in research, reading, coursework, or anxious rumination (rare these days), I enjoy playing drums, snowboarding, and anything to do with sci-fi.
 
-### "What even is a complex system anyway?"
+### "What is a complex system anyway?"
 Complex systems are collections of components that self-organize into a greater, cohesive "whole" despite lacking centralized direction. Check out [this website](https://complexityexplained.github.io) to learn more.
