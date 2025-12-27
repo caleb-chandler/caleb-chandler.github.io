@@ -21,7 +21,7 @@ title                    : "Caleb Chandler"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Caleb Chandler"
-description              : # "An amazing website."
+description              : "Personal website of Caleb Chandler, researcher, data analyst, graduate student. Complex systems, network science."
 url                      : "https://caleb-chandler.github.io"
 baseurl                  : ""
 repository               : "caleb-chandler/caleb-chandler.github.io"
@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Caleb Chandler"
-  avatar           : "C:\\Users\\User\\Documents\\resumes + cvs\\thumbnail_Caleb.jpg)"
+  avatar           : ".\\assets\\imgs\\thumbnail_Caleb.jpg"
   bio              : "Grad student and researcher studying complex systems and social evolution."
   location         : "Boston, MA"
   email            :
