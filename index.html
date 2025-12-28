@@ -1,22 +1,45 @@
 ---
-layout: splash
+layout: single
+author_profile: true
 ---
-<h1>About Me</h1>
-<p>
-  I am a researcher, data analyst, and graduate student at Northeastern University
-  studying networks and complex systems. My primary academic interest is the 
-  long-term structural evolution of large-scale human social systems.
-</p>
 
-<p>
-  When I'm not engaged in research, reading, coursework, or anxious rumination 
-  (rare these days), I enjoy playing drums, snowboarding, and anything to do 
-  with sci-fi.
-</p>
+<div class="home-section">
+  <h2>About Me</h2>
+  <p>
+    I am a researcher, data analyst, and graduate student at Northeastern University
+    studying networks and complex systems. My primary academic interest is the
+    long-term structural evolution of large-scale human social systems.
+  </p>
+  <p>
+    When I'm not engaged in research, reading, coursework, or anxious rumination
+    (rare these days), I enjoy playing drums, snowboarding, and anything to do
+    with sci-fi.
+  </p>
+</div>
 
-<h3>"What is a complex system anyway?"</h3>
-<p>
-  Complex systems are collections of components that self-organize into a 
-  greater, cohesive "whole" despite lacking centralized direction. Check out 
-  <a href="https://complexityexplained.github.io">this website</a> to learn more.
-</p>
+<div class="home-section">
+  <h2>Research Interests</h2>
+  <p>
+    Complex systems are collections of components that self-organize into a
+    greater, cohesive "whole" despite lacking centralized direction. Check out
+    <a href="https://complexityexplained.github.io">Complexity Explained</a> to learn more.
+  </p>
+</div>
+
+<div class="home-section recent-posts">
+  <h2>Recent Posts</h2>
+  {% for post in site.posts limit:3 %}
+    <article class="archive__item">
+      <h3 class="archive__item-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+      <p class="page__meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+      </p>
+      {% if post.excerpt %}
+        <p class="archive__item-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </article>
+  {% endfor %}
+  <p><a href="{{ '/blog/' | relative_url }}">View all posts &rarr;</a></p>
+</div>

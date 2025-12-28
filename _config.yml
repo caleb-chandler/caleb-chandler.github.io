@@ -10,9 +10,9 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# theme                  : "minimal-mistakes-jekyll"
-remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+theme                  : "minimal-mistakes-jekyll"
+# remote_theme           : "mmistakes/minimal-mistakes"
+minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -146,7 +146,7 @@ footer:
       url: "mailto: chandlerc41eb@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "github.com/caleb-chandler"
+      url: "https://github.com/caleb-chandler"
   since: "2025"
 
 
@@ -301,6 +301,12 @@ compress_html:
     envs: development
 
 
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
 # Defaults
 defaults:
   # _posts
@@ -314,3 +320,11 @@ defaults:
       comments: # true
       share: true
       related: true
+  # _projects
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: single
+      author_profile: true
+      share: true
