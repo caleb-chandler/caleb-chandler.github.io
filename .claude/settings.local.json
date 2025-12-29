@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:iaciac.github.io)",
+      "Bash(bundle exec jekyll serve:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\User\\Documents\\cfb project"
+    ]
+  }
+}
