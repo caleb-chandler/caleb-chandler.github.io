@@ -21,7 +21,7 @@ title                    : "Caleb Chandler"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Caleb Chandler"
-description              : "Personal website of Caleb Chandler, researcher, data analyst, graduate student. Complex systems, network science."
+description              : "Caleb Chandler personal website, researcher, data analyst, graduate student. Complex systems, network science."
 url                      : "https://caleb-chandler.github.io"
 baseurl                  : ""
 repository               : "caleb-chandler/caleb-chandler.github.io"
@@ -115,13 +115,13 @@ analytics:
 author:
   name             : "Caleb Chandler"
   avatar           : "/assets/imgs/thumbnail_Caleb.jpg"
-  bio              : "Grad student and researcher studying complex systems and social evolution."
+  bio              : "Studying complex systems, network science, and societal evolution."
   location         : "Boston, MA"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
+      url: "mailto: chandlerc41eb@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
