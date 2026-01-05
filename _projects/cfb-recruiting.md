@@ -55,13 +55,24 @@ There is a clear hierarchy between divisions, with D2 and D3 programs at the out
 
 Clustering is functionally nonexistent here because players select their next school based on factors that have nothing to do with their previous one. Destinations must be driven primarily by factors not included in my data, such as NIL, playing time, coach movement, etc.
 
-## II. Directionality (Where does talent flow?)
+## II. Directionality (Where are players going?)
 
 ...
 
 Since we are dealing with a directed network, we can take advantage of in-degree and out-degree (incoming vs outgoing transfers) to create two simple node-level metrics. We'll call them "Net Portal Gain" and "Net Portal Value," or NPG and NPV. NPG is just the net degree -- the sum of in-transfers and out-transfers for a node -- and NPV is the same but with player rating.
 
-Unsurprisingly, change in NPV is driven almost entirely by change in NPG; a correlation made even stronger by the fact that no players are rated lower than 0.75.
+This is the distribution of NPG for all five years.
+
+[img]
+
+When we isolate the top and bottom schools by aggregate (summed) NPG, we see something interesting.
+
+[img]
+
+The bottom 10 is filled almost exclusively with _blue-bloods_, some of the very most successful and prestigious programs of the past 25 years. These programs all seem to be hemorrhaging players at an astounding rate. Meanwhile, the other side consists mostly of much-less-prestigious G5 schools which are soaking up the difference.
+This is interesting because it suggests ...
+
+As you may have already guessed, change in NPV is driven almost entirely by change in NPG; a correlation made even stronger by the fact that no players are rated lower than 0.75.
 
 [correlation]
 
@@ -75,7 +86,13 @@ If we control for NPG and isolate the effect of NPV, however, we get this:
 
 ## III. Centrality (Which schools are most important?)
 
-In network science, we use a certain class of metrics -- called centrality metrics -- to obtain some measure of a node's "importance" in a network. There are many different centrality metrics to choose from, each of whcih defines importance in its own way.
+In network science, we use a certain class of metrics -- called centrality metrics -- to obtain some measure of a node's "importance" in a network. There are many of these metrics to choose from, each of which defines importance in its own way. For our purposes, I have selected three: betweenness, closeness, and PageRank.
+
+Betweenness centrality works by finding the shortest paths between all pairs of nodes in the network and then finding the percentage of these paths that run through a particular node. It is designed to measure the extent to which a certain node acts as a "middleman" between disparate parts of the network.
+Closeness centrality is ...
+PageRank was initially developed by Larry Page and Sergey Brin and is the algorithm they used to found Google. It's a way of measuring the importance of a node by measuring the importance of its neighbors. ... It was designed specifically for directed networks, making it a natural choice.
+
+
 
 # Meaning & Interpretation
 
