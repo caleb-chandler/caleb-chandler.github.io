@@ -25,7 +25,7 @@ At its core, network science is the study of _connectivity_. It moves the focus 
 [img]
 
 Networks are applications of graph theory (if you know what that is) to the analysis of real-world systems. They are composed of nodes -- individual entities or elements -- and edges, the links between these nodes, which can be weighted by values representing the number of links between the same nodes, the "strength" of the links, or some other attribute. Edges can be either directed (meaning they "point" from one node to another) or undirected. Both nodes and edges can be imbued with any number of attributes. 
-Networks can also be bipartite, where nodes are given "classes," and nodes of one class can only connect with nodes of the other (used to model relationships like pollinator-plant, author-paper, etc). Bipartite networks can be "projected" to turn them into a more traditional network isolating the nodes of either class, where edges in the projected network represent an edge two nodes of the same class share with a node of the other in the original network (for instance, two genes that share an association with a particular disease).
+Networks can also be bipartite, where nodes are given "classes" and nodes of one class can only connect with nodes of the other (used to model relationships like pollinator-plant, author-paper, etc). Bipartite networks can be "projected" to turn them into a more traditional network isolating the nodes of either class, where edges in the projected network represent an edge two nodes of the same class share with a node of the other in the original network (for instance, two genes that share an association with a particular disease).
 
 Network science, then, is a field united much more by methodology than subject matter. It's been used to study all sorts of subjects, ranging from [disease transmission]() to the [global financial system]() to [synaptic connections between neurons in the brain]().
 
@@ -33,17 +33,17 @@ In the context of the transfer portal, the application is rather obvious. School
 
 [img]
 
-What's more, even traditional recruiting can be represented as a network: a bipartite one, with schools on one side and recruit hometowns on the other. It can then be projected by school to identify shared recruiting grounds. In this case the usable data goes back much further, specifically to 2002. The recruiting network has some interesting findings, too (including one especially cool one), but we can save that for later. For now, we'll just focus on the portal.
+What's more, even traditional recruiting can be represented as a network: a bipartite one, with schools on one side and recruit hometowns on the other. It can then be projected by school to identify shared recruiting grounds. In this case the usable data goes back much further (specifically to 2002). The recruiting network has some interesting findings, too -- including one especially cool one -- but we can save that for later. For now, we'll just focus on the portal.
 
-# Part I: Anatomy of the Network
+# Anatomy of the Network
 
-## Topology (What kind of network is this?)
+## I. Topology (What kind of network is this?)
 
 [img]
 
-Here, at long last, is the full image of the transfer portal in all its glory -- in this case for the most recent year, 2025. ...
+Here, at long last, is a full image of the transfer portal in all its glory -- in this case for the most recent year, 2025. ...
 
-The structure of a network is called its [topology](). In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by aggregating certain network statistics, such as clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (ratio of possible edges to existing ones), degree (simply the number of neighbors), and so on. For example, when a network is highly clustered, has a short average path-length (technically average _shortest_ path-length) between any two given nodes, and sports a heavy-tailed degree distribution, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high due to the nature of socialization (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
+The structure of a network is called its [topology](). In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by aggregating certain network statistics, such as clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges to existing ones), degree (the total number of neighbors), and so on. For example, when a network is highly clustered, has a short average path-length (technically average _shortest_ path-length) between any two given nodes, and [has] a heavy-tailed degree distribution, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high due to the nature of socialization (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
 The transfer portal is notable because its topology actually doesn't fit neatly into any particular “class.” Like a small-world network, it exhibits a very short average path length and a relatively small [diameter](), meaning that nearly any two programs are only a few steps apart through chains of transfers. But it is also extremely sparse, with low density (0.02) and a low average clustering coefficient (0.092). It's also highly asymmetric, with connectivity dominated by directional flows rather than dense, reciprocal neighborhoods. Degree varies substantially across nodes, but this is due to hierarchical differentiation rather than the triadic closure typical of social networks. In other words, the transfer portal combines the global reachability of a small-world social network with the sparse, hub-mediated structure of a flow or infrastructure network.
 
@@ -51,30 +51,45 @@ To find some clues as to why this may be, we can use the Fruchterman-Reingold al
 
 [fr viz]
 
-There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a classic hierarchical "out-to-in" flow pattern, where significantly more players transfer up from lower divisions than down to them (this pattern notably does _not_ hold _within_ divisions, however; we'll explore that later).
+There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a classic hierarchical "out-to-in" flow pattern, where significantly more players transfer up from lower divisions than down to them. (this notably does _not_ hold _within_ divisions, however; we'll explore that later). This pattern makes sense given that there is usually little reason for a player in D2 or D3 to transfer laterally.
 
-The likely reason for clustering being functionally nonexistent here is that players select their next school based on factors that have nothing to do with their previous one. Destinations are probably driven primarily by factors like NIL, playing time, and coach movement, none of which unfortunately are included in my data.
+Clustering is functionally nonexistent here because players select their next school based on factors that have nothing to do with their previous one. Destinations must be driven primarily by factors not included in my data, such as NIL, playing time, coach movement, etc.
 
-## Directionality (Where do players move?)
+## II. Directionality (Where does talent flow?)
 
+...
 
+Since we are dealing with a directed network, we can take advantage of in-degree and out-degree (incoming vs outgoing transfers) to create two simple node-level metrics. We'll call them "Net Portal Gain" and "Net Portal Value," or NPG and NPV. NPG is just the net degree -- the sum of in-transfers and out-transfers for a node -- and NPV is the same but with player rating.
 
-## Centrality (Which schools are most important?)
+Unsurprisingly, change in NPV is driven almost entirely by change in NPG; a correlation made even stronger by the fact that no players are rated lower than 0.75.
 
-# Part II: Interpretation
+[correlation]
 
-Taken together, the evidence tells a very particular story. 
-
-First is talent distribution. Within the FBS, top recruits still cluster at a small number of elite programs, but now, with the advent of the portal, elite programs can no longer hoard them several layers down on the depth chart. Since these players are still quite good, they are valuable on the market and well able to transfer elsewhere, which cannot be said for backups at lower-tier programs. Notwithstanding several notable exceptions, transfers are statistically far more likely to be moving _down_ from the P4 than _up_ from the G6.
-As a result of this dynamic, the pattern we see is that of P4 programs trading **quantity for quality**, hemorrhaging a massive amount of _volume_ while at the same time bringing in a small quantity of nevertheless elite talent. Nowhere is this pattern illustrated more clearly than in [description of chart]:
+If we control for NPG and isolate the effect of NPV, however, we get this:
 
 [img]
 
-Schools increasingly become feeder programs for higher level teams as you move down tiers, which is cool to see in a visualization, but not necessarily surprising. There is little reason for a player to transfer out of DII unless it's to play at a higher level.
+[description of chart]
 
-But what about parity? Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without transfers like Fernando Mendoza and Elijah Sarratt. Similarly, Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (as of the time of this writing) has ever won a championship was 2001. So does the data agree with the gut in this case?
+...
 
-As it turns out, the truth is more nuanced. 
+## III. Centrality (Which schools are most important?)
+
+In network science, we use a certain class of metrics -- called centrality metrics -- to obtain some measure of a node's "importance" in a network. There are many different centrality metrics to choose from, each of whcih defines importance in its own way.
+
+# Meaning & Interpretation
+
+Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without transfers like Fernando Mendoza and Elijah Sarratt. Similarly, Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (at the time of this writing) has ever won a championship was 2001. So does the data agree with the gut in this case? And if so, why?
+
+The analysis suggests that there are competing dynamics at play. Top recruits still cluster at a small number of elite programs, but now, with the advent of the portal, those programs can no longer hoard them several layers down on the depth chart. Since these players are still quite good, they are valuable on the market and well able to transfer elsewhere, which cannot necessarily be said for backups at lower-tier programs. Notwithstanding several notable exceptions, transfers are statistically far more likely to be moving _down_ from the P4 than _up_ from the G6.
+As a result of this dynamic, the pattern we see is that of top programs trading **quantity for quality**, hemorrhaging a massive amount of _volume_ while at the same time bringing in a small quantity of nevertheless elite talent. Nowhere is this pattern illustrated more clearly than in this chart:
+
+[img]
+
+This is a Sankey diagram of conference affiliation, showing where players move to based on where they started. ...
+
+While top programs are still getting the very best -- and indeed may be getting even higher _top-end_ talent -- the difference in talent between the players they're losing and the players they're gaining is not enough to make up for the loss in volume. These programs always had the best players, but now their overall _share_ of the best players is smaller.
+Combined with the status of "mid-tier" programs as go-betweens for rising stars in lower divisions and FCS, the net effect of the portal is, indeed, to increase parity.
 
 # Bonus: Recruiting and Talent Metrics
 
