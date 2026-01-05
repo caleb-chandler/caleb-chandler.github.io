@@ -45,19 +45,23 @@ Here, at long last, is the full image of the transfer portal in all its glory --
 
 The structure of a network is called its [topology](). In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by aggregating certain network statistics, such as clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (ratio of possible edges to existing ones), degree (simply the number of neighbors), and so on. For example, when a network is highly clustered, has a short average path-length (technically average _shortest_ path-length) between any two given nodes, and sports a heavy-tailed degree distribution, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high due to the nature of socialization (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
-The transfer portal is notable because its topology actually doesn't fit neatly into any particular “class.” Like a small-world network, it exhibits a very short average path length and a relatively small diameter, meaning that nearly any two programs are only a few steps apart through chains of transfers. However, unlike a small-world network, it is weakly clustered and highly asymmetric, with connectivity dominated by directional flows rather than dense, reciprocal neighborhoods. ThisDegree varies substantially across nodes, but this variation reflects hierarchical role differentiation rather than the organic, triadic closure typical of social networks. In other words, the transfer portal combines the global reachability of a small-world with the sparse, hub-mediated structure of a flow or infrastructure network, placing it somewhere between a social graph and a logistical backbone rather than squarely within either category. So why do ...?
+The transfer portal is notable because its topology actually doesn't fit neatly into any particular “class.” Like a small-world network, it exhibits a very short average path length and a relatively small [diameter](), meaning that nearly any two programs are only a few steps apart through chains of transfers. But it is also extremely sparse, with low density (0.02) and a low average clustering coefficient (0.092). It's also highly asymmetric, with connectivity dominated by directional flows rather than dense, reciprocal neighborhoods. Degree varies substantially across nodes, but this is due to hierarchical differentiation rather than the triadic closure typical of social networks. In other words, the transfer portal combines the global reachability of a small-world social network with the sparse, hub-mediated structure of a flow or infrastructure network.
 
-To visualize networks, we can use one of several layout algorithms. The Fruchterman-Reingold algorithm is one of these. It works by treating nodes as electrically-charged particles, pushing unconnected nodes apart and pulling connected ones together to find an "entropy-maximizing" equilibrium. Applying this algorithm to our network and coloring the nodes by division reveals a major culprit behind its topology:
+To find some clues as to why this may be, we can use the Fruchterman-Reingold algorithm -- one of several "layout algorithms" used to visualize networks. It works by treating nodes as if they were electrically-charged particles, pushing unconnected nodes apart and pulling connected ones together to find an "entropy-maximizing" equilibrium. Applying this algorithm to our network and coloring the nodes by division reveals a major culprit behind its topology:
 
 [fr viz]
 
-There is a clear hierarchy between divisions, with lower division programs at the outer fringes of the network and FBS programs in the center.
+There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a classic hierarchical "out-to-in" flow pattern, where significantly more players transfer up from lower divisions than down to them (this pattern notably does _not_ hold _within_ divisions, however; we'll explore that later).
+
+The likely reason for clustering being functionally nonexistent here is that players select their next school based on factors that have nothing to do with their previous one. Destinations are probably driven primarily by factors like NIL, playing time, and coach movement, none of which unfortunately are included in my data.
 
 ## Directionality (Where do players move?)
 
+
+
 ## Centrality (Which schools are most important?)
 
-# Part II: Interpretation of the Findings
+# Part II: Interpretation
 
 Taken together, the evidence tells a very particular story. 
 
