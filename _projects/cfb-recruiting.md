@@ -74,22 +74,21 @@ As for clustering, it is functionally nonexistent here because players select th
 
 ## II. Centrality (Which schools are most important?)
 
-In network science, we use a certain class of statistics -- called centrality metrics -- to obtain some measure of a node's "importance" in a network. There are many centrality metrics to choose from, each of which defines importance in its own way. For this network, I have selected two: HITS and PageRank.
+In network science, we use a certain class of statistics -- called centrality metrics -- to obtain some measure of a node's "importance" in a network. There are many centrality metrics to choose from, each of which defines importance in its own way. For this network, I have selected two: PageRank and HITS.
 
-[PageRank](https://en.wikipedia.org/wiki/PageRank#Simplified_algorithm) was initially developed as a search ranking algorithm by Larry Page and Sergey Brin and was the impetus for the founding of Google. It's a way of measuring the importance of a node (in their case a webpage) by measuring the importance of its neighbors. It is designed specifically for directed networks, making it a natural choice here.
-[HITS](https://en.wikipedia.org/wiki/HITS_algorithm#Algorithm), incidentally, was also originally made to rank webpages. It's a ... that is technically a combination of two metrics: a Hub score and an Authority score. Hub is ... and Authority is ... For our purposes, we're going to ignore the Hub score because ... and just focus on the Authority score, since ...
-
-Here are the distributions of PageRank and HITS Authority scores for all schools, averaged over the years.
-
-![Alt text 1](URL_OF_IMAGE_1) ![Alt text 2](URL_OF_IMAGE_2)
-
-They both fit a power law, indicating that the distribution is highly unequal.
+[PageRank](https://en.wikipedia.org/wiki/PageRank#Simplified_algorithm) was initially developed as a search ranking algorithm by Larry Page and Sergey Brin and was the impetus for the founding of Google. It's a way of measuring the importance of a node -- in their case a webpage -- by measuring the importance (via degree) of its neighbors. It is designed specifically for directed networks, making it a natural choice here.
+[HITS](https://en.wikipedia.org/wiki/HITS_algorithm#Algorithm), incidentally, was also originally made to rank webpages. It's technically a combination of two metrics: a Hub score and an Authority score. These scores are somewhat recursive: Hub is a measure of a node's propensity to point to nodes with high Authority, and Authority is a measure of how many high-scoring "Hubs" point back to that node, signaling that the node is a primary destination/store of value. For our purposes, we're going to ignore the Hub score and just focus on Authority, since it will identify "sinks" -- schools that act as prime destinations, which is what we're after.
 
 Calculating the centrality values for each node in the aggregated network, we get these results:
 
 [img]
 
-This is a visual representation of the top 15 schools by each metric. Metrics are calculated from the full network but the visualization algorithm was only run on the second (to improve readability). ...
+This is a visual representation of the top 15 schools by each metric, upscaled and labeled. Metrics are calculated from the full network but the visualization algorithm was only run on the FBS subgraph, to improve readability.
+...
+
+Here are the rankings, if you're interested.
+
+[two imgs side by side]
 
 ## III. Directionality (Who's gaining and losing?)
 
@@ -166,4 +165,7 @@ See anything? Let's try adding labels to the communities:
 [img]
 
 What you're looking at is the physical manifestation of recruiting pipelines in "graph space," drawn from real-world data stretching back 24 years.
-Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which happen to correspond almost perfectly with the regions East and West of the Mississippi River.
+Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which happen to correspond almost perfectly with the regions East and West of the Mississippi River. 
+What's striking here is just how _far apart_ the communities are. Generally when doing community detection, there's some ambiguity about where to draw the line. Not so here. In this case we have two communities -- East and West -- that are so clearly demarcated that we didn't actually even need the community detection algorithm to see them (though it helps with further decomposing them). In other words, it is very nearly impossible for these to have emerged by pure chance, meaning that recruiting truly is divided into two major meta-pipelines, and moreover so _clearly_ divided as to be impossible to dismiss. 
+I certainly expected to see _some_ meaningful communities when I ran this algorithm, but this is on another level. As far as I'm aware (though I may be wrong), this is the first time these particular communities have been discovered and visualized, which is extremely cool.
+Looking at individual schools (labels are a little messy, sorry about that), we can see some interesting things. For instance, we can see that Iowa and Iowa State actually operate in entirely separate recruiting pipelines despite being less than 50 miles from eachother -- likely owing to both their central location and long period of playing in separate conferences. We can also see that Army, Northwestern, and Arkansas State occupy "broker" positions in-between communities, where they have the seemingly rare privilege of recruiting from both.
