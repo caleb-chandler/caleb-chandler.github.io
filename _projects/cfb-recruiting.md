@@ -47,7 +47,9 @@ But that doesn't tell us anything new. To get to the really juicy insights, we'l
 
 The structure of a network is called its [topology](). In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by obtaining certain network statistics, such as degree, clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
-These are some aggregated statistics for our transfer portal networks (calculated as averages of averages so as to avoid privileging years with more data):
+[img of small-world network]
+
+Here are some aggregated statistics for our transfer portal networks (calculated as averages of averages so as to avoid privileging years with more data):
 
 | Metric | Value |
 | :--- | :--- |
@@ -67,7 +69,7 @@ To find some clues as to why this may be, we can use the [Fruchterman-Reingold](
 
 [fr viz]
 
-There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a pattern where teams at higher levels engage in the portal at a significantly higher rate.
+There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a pattern where teams at higher levels engage in the portal at a significantly higher rate, which makes sense given that players' value on the market (not to mention the degree of priority they place on football) scales down with division.
 [explain how this explains the topology]
 
 As for clustering, it is functionally nonexistent here because players select their next school based on factors that have nothing to do with their previous one (likely NIL, playing time, coach movement, etc.)
@@ -76,7 +78,7 @@ As for clustering, it is functionally nonexistent here because players select th
 
 In network science, we use a certain class of statistics -- called centrality metrics -- to obtain some measure of a node's "importance" in a network. There are many centrality metrics to choose from, each of which defines importance in its own way. For this network, I have selected two: PageRank and HITS.
 
-[PageRank](https://en.wikipedia.org/wiki/PageRank#Simplified_algorithm) was initially developed as a search ranking algorithm by Larry Page and Sergey Brin and was the impetus for the founding of Google. It's a way of measuring the importance of a node -- in their case a webpage -- by measuring the importance (via degree) of its neighbors. It is designed specifically for directed networks, making it a natural choice here.
+[PageRank](https://en.wikipedia.org/wiki/PageRank#Simplified_algorithm) was initially developed as a search ranking algorithm by Larry Page and Sergey Brin and was the impetus for the founding of Google. It's a way of measuring the importance of a node -- in their case a webpage -- by measuring the importance of its neighbors (via degree). It is designed specifically for directed networks, making it a natural choice here.
 [HITS](https://en.wikipedia.org/wiki/HITS_algorithm#Algorithm), incidentally, was also originally made to rank webpages. It's technically a combination of two metrics: a Hub score and an Authority score. These scores are somewhat recursive: Hub is a measure of a node's propensity to point to nodes with high Authority, and Authority is a measure of how many high-scoring "Hubs" point back to that node, signaling that the node is a primary destination/store of value. For our purposes, we're going to ignore the Hub score and just focus on Authority, since it will identify "sinks" -- schools that act as prime destinations, which is what we're after.
 
 Calculating the centrality values for each node in the aggregated network, we get these results:
@@ -84,7 +86,9 @@ Calculating the centrality values for each node in the aggregated network, we ge
 [img]
 
 This is a visual representation of the top 15 schools by each metric, upscaled and labeled. Metrics are calculated from the full network but the visualization algorithm was only run on the FBS subgraph, to improve readability.
-...
+Because PageRank values a node based on the importance of its neighbors, it highlights schools that take in players not just randomly, but from other highly-connected, high-profile programs. This identifies the programs that have used the portal as a primary engine to completely overhaul their rosters with high-value talent in a very short window, which can be confirmed by a cursory glance and some prior knowledge about these programs' recent histories.
+The HITS Authority results, on the other hand, highlight programs with high "prestige" in the portal, that is ones which act moreso as ultimate endpoints. Schools high in Authority represent the premier destinations in the network. They are the schools that transferring players have collectively "voted" for as the primary landing spots.
+As you can see there are some schools, like Colorado and Ole Miss, that score highly on both metrics. 
 
 Here are the rankings, if you're interested.
 
@@ -92,7 +96,7 @@ Here are the rankings, if you're interested.
 
 ## III. Directionality (Who's gaining and losing?)
 
-...
+This is all well and good, but what we mostly want to know when we're talking about the portal is who w
 
 Since we are dealing with a directed network, we can take advantage of in-degree and out-degree (incoming vs outgoing transfers) to create two simple node-level metrics. We'll call them "Net Portal Gain" and "Net Portal Value," or NPG and NPV. NPG is just the net degree -- the number of in-transfers minus out-transfers for a node -- and NPV is the same but with player rating.
 This is the distribution of NPG for all five years.
@@ -146,12 +150,10 @@ Combined with the status of "mid-tier" programs as go-betweens for rising stars 
 
 # The Recruiting Network: Visualizing Pipelines
 
-I promised I'd get to recruiting, so here we are. I must admit that I didn't end up getting to do nearly as much with this as I would have liked, but I was still able to obtain at least one very interesting result that, despite being secondary to the main project, I think is easily the most exciting one I got.
+I promised I'd get to recruiting, so here we are. I must admit that I didn't end up getting to do nearly as much with this as I would have liked, but I was still able to obtain at least one very interesting result that, despite being secondary to the main project, I think is actually the most exciting one I got.
 As a reminder, the recruiting networks consist of teams that recruited from the same locations in the same year, with edges weighted by the number of times they did so.
 
 This one turned out to be more of a small-world topology, with high clustering and a short path length. Here are its aggregated statistics and degree distribution, which is best approximated by a one-tailed bell curve (with a predictable slight jump at 0 for recruits from remote areas). This distribution likely just reflects the fact that teams have a limited number of scholarship offers they can make per season.
-
-
 
 [img]
 
@@ -165,7 +167,7 @@ See anything? Let's try adding labels to the communities:
 [img]
 
 What you're looking at is the physical manifestation of recruiting pipelines in "graph space," drawn from real-world data stretching back 24 years.
-Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which happen to correspond almost perfectly with the regions East and West of the Mississippi River. 
+Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which just happen to correspond almost perfectly with the regions East and West of the Mississippi River. 
 What's striking here is just how _far apart_ the communities are. Generally when doing community detection, there's some ambiguity about where to draw the line. Not so here. In this case we have two communities -- East and West -- that are so clearly demarcated that we didn't actually even need the community detection algorithm to see them (though it helps with further decomposing them). In other words, it is very nearly impossible for these to have emerged by pure chance, meaning that recruiting truly is divided into two major meta-pipelines, and moreover so _clearly_ divided as to be impossible to dismiss. 
 I certainly expected to see _some_ meaningful communities when I ran this algorithm, but this is on another level. As far as I'm aware (though I may be wrong), this is the first time these particular communities have been discovered and visualized, which is extremely cool.
 Looking at individual schools (labels are a little messy, sorry about that), we can see some interesting things. For instance, we can see that Iowa and Iowa State actually operate in entirely separate recruiting pipelines despite being less than 50 miles from eachother -- likely owing to both their central location and long period of playing in separate conferences. We can also see that Army, Northwestern, and Arkansas State occupy "broker" positions in-between communities, where they have the seemingly rare privilege of recruiting from both.
