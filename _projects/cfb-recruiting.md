@@ -41,11 +41,13 @@ What's more, even traditional recruiting can be represented as a network: a bipa
 
 [img]
 
-Here, at long last, is a full image of the transfer portal in all its glory -- in this case for the most recent year, 2025. Nodes are sized and colored by their degree (number of connections), so that higher-degree schools are larger and bluer. For the sake of readability, I've restricted labels to only the highest-degree schools.
+Here, at long last, is a full image of the transfer portal in all its glory -- in this case for the most recent year, 2025. Nodes are sized and colored by their weighted degree (sum of the weight of its connections), so that higher-degree schools are larger and bluer. For the sake of readability, I've restricted labels to only the highest-degree schools.
 A couple fun things immediately stand out here: for instance, we can observe huge outflows from Marshall to Southern Miss and from South Dakota State to Washington State as a result of players following their coaches to new schools. We also observe that Purdue had an extremely turbulent year in the portal (high degree) following their abysmal 2-10 season and subsequent need to replace departing players. 
-But that doesn't tell us anything new. To get to the really juicy insights, we'll need to dig deeper.
+Here are the other four seasons, arranged in order from earliest to latest.
 
-The structure of a network is called its [topology](). In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by obtaining certain network statistics, such as degree, clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
+[]
+
+The structure of a network is called its [topology](). In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by obtaining certain network statistics, such as degree (number of a node's connections), clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges in the network to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
 [img of small-world network]
 
@@ -59,7 +61,7 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 | Average Clustering Coefficient | 0.0585 |
 | Density | 0.0175 |
 
-And here is their average degree distribution, which roughly follows a power law with exponent __ (meaning that the probability of engaging in the portal at a certain rate scales up by __ as that rate decreases)
+And here is their average degree distribution, which follows a power law with exponent __ (meaning that the probability of engaging in the portal at a certain rate scales up by __ as that rate decreases)
 
 [img]
 
@@ -96,8 +98,6 @@ Here are the rankings, if you're interested.
 
 ## III. Directionality (Who's gaining and losing?)
 
-This is all well and good, but what we mostly want to know when we're talking about the portal is who w
-
 Since we are dealing with a directed network, we can take advantage of in-degree and out-degree (incoming vs outgoing transfers) to create two simple node-level metrics. We'll call them "Net Portal Gain" and "Net Portal Value," or NPG and NPV. NPG is just the net degree -- the number of in-transfers minus out-transfers for a node -- and NPV is the same but with player rating.
 This is the distribution of NPG for all five years.
 
@@ -117,7 +117,8 @@ If we control for NPG and isolate the effect of NPV, however, we get this:
 
 [img]
 
-[description of chart]
+This is a chart showing, on the x axis, average NPG, and on the y-axis the difference between expected value added (based on their NPG) and the actual value they did add. Schools are colored by division and the top/bottom 8 are labeled. 
+Interestingly, it seems to be stratified mostly within-FBS; P5/4 schools are generally getting more "bang for their buck" while G5/6 are getting less. This pattern notably holds more for G6 than P4, though. The top 8 are all P4, while the bottom 8 are evenly split, with Alabama and Georgia especially getting clobbered in the portal -- both by volume _and_ relative value.
 
 We can also look at in-degree and out-degree in isolation, allowing us to see who's gaining and losing the most in absolute terms without considering the ratio.
 
@@ -131,11 +132,11 @@ The results of our network analysis suggest that there are competing dynamics at
 
 [bar plot]
 
-As a result of this dynamic, the pattern we see is that of top programs trading **quantity for quality**, hemorrhaging a massive amount of _volume_ while at the same time bringing in a small quantity of nevertheless elite talent. Nowhere is this pattern illustrated more clearly than in these charts:
+As a result of this dynamic, the pattern we see is that of top programs trading **quantity for quality**, hemorrhaging a massive amount of volume while at the same time bringing in a small quantity of nevertheless elite talent. Nowhere is this pattern illustrated more clearly than in these charts:
 
 [img]
 
-These are Sankey diagrams, made for visualizing flow rates. Used here, they show all the journeys made by transferring players over the past five seasons; first by division, and then by conference. ...
+These are Sankey diagrams, made for visualizing flow rates. Used here, they show all the journeys made by transferring players over the past five seasons; first by division, and then by conference ...
 
 [img]
 
@@ -167,7 +168,7 @@ See anything? Let's try adding labels to the communities:
 [img]
 
 What you're looking at is the physical manifestation of recruiting pipelines in "graph space," drawn from real-world data stretching back 24 years.
-Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which just happen to correspond almost perfectly with the regions East and West of the Mississippi River. 
+Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which just happen to correspond almost perfectly with the two sides of the Mississippi River. 
 What's striking here is just how _far apart_ the communities are. Generally when doing community detection, there's some ambiguity about where to draw the line. Not so here. In this case we have two communities -- East and West -- that are so clearly demarcated that we didn't actually even need the community detection algorithm to see them (though it helps with further decomposing them). In other words, it is very nearly impossible for these to have emerged by pure chance, meaning that recruiting truly is divided into two major meta-pipelines, and moreover so _clearly_ divided as to be impossible to dismiss. 
 I certainly expected to see _some_ meaningful communities when I ran this algorithm, but this is on another level. As far as I'm aware (though I may be wrong), this is the first time these particular communities have been discovered and visualized, which is extremely cool.
-Looking at individual schools (labels are a little messy, sorry about that), we can see some interesting things. For instance, we can see that Iowa and Iowa State actually operate in entirely separate recruiting pipelines despite being less than 50 miles from eachother -- likely owing to both their central location and long period of playing in separate conferences. We can also see that Army, Northwestern, and Arkansas State occupy "broker" positions in-between communities, where they have the seemingly rare privilege of recruiting from both.
+Looking at individual schools, we can see some interesting things. For instance, we can see that Iowa and Iowa State actually operate in entirely separate recruiting pipelines despite being less than 50 miles from eachother -- likely owing both to their central location and long period of playing in separate conferences. We can also see that Army, Northwestern, and Arkansas State occupy "broker" positions in-between communities, where they have the seemingly rare privilege of recruiting from both.
