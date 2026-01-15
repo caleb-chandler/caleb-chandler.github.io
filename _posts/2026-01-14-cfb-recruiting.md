@@ -23,7 +23,7 @@ Before we begin, it will be prudent to give a brief rundown of what network scie
 
 At its core, network science is the study of _connectivity_. It moves the focus away from the individual characteristics of single entities and toward the relationships _between_ those entities, analyzing the resulting "whole" as one new, consolidated entity: a network, which encodes in its relationships a high-level description of the entire system.
 
-![image of a network](/caleb-chandler.github.io/assets/cfb/Network-visualization-illustration.jpg)
+![image of a network](/assets/cfb/Network-visualization-illustration.jpg)
 
 Networks are applications of [graph theory](https://en.wikipedia.org/wiki/Graph_theory) to the analysis of real-world systems. They are composed of nodes -- individual entities or elements -- and edges, the links between these nodes, which can be weighted by values representing the number of links between the same nodes, the "strength" of the links, or some other attribute. Edges can be either directed (meaning they "point" from one node to another) or undirected. Both nodes and edges can be imbued with any number of attributes. In the parlance of the field, "network" is often used interchangeably with "graph."
 Networks can also be bipartite, where nodes are given "classes" and nodes of one class can only connect with nodes of the other (used to model relationships like pollinator-plant, author-paper, etc). Bipartite networks can also be "projected" to turn them into a more traditional network isolating the nodes of either class, where edges between nodes in the projected network represent a node of the other class that they both share a link to in the original network (for instance, two genes that share an association with a particular disease).
@@ -38,7 +38,7 @@ What's more, even traditional recruiting can be represented as a network: a bipa
 
 ## I. Topology (What kind of network is this?)
 
-![visualization of portal for 2025](/caleb-chandler.github.io/assets\cfb\2025.png)
+![visualization of portal for 2025](/assets/cfb/2025.png)
 
 Here, at long last, is the full picture of the transfer portal in all its glory -- in this case for the most recent year, 2025. Nodes are laid out geographically and sized/colored by their weighted degree (sum of the weight of their connections), so that higher-degree schools are larger and bluer. For the sake of readability, I've restricted labels to only the highest-degree schools.
 A couple fun things immediately stand out here: for instance, we can observe huge outflows from Marshall to Southern Miss and from South Dakota State to Washington State as a result of players following their coaches to new schools. We also observe that Purdue had an extremely turbulent year in the portal (high degree) following their abysmal 2-10 season and subsequent need to replace departing players. 
@@ -48,7 +48,7 @@ Here are the other four seasons, arranged in order from earliest to latest.
 
 The structure of a network is called its topology. In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by obtaining certain network statistics, such as degree (number of a node's connections), clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges in the network to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
-![image of a small-world network](/caleb-chandler.github.io/assets/cfb/smallworld.jpg)
+![image of a small-world network](/assets/cfb/smallworld.jpg)
 
 Here are some aggregated statistics for our transfer portal networks (calculated as averages of averages so as to avoid privileging years with more data):
 
@@ -62,13 +62,13 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 
 And here is their average degree distribution, which follows a power law with exponent -1.03 (meaning that the probability of engaging in the portal at a certain rate scales up by 1.03 as that rate decreases)
 
-![degree distribution of average transfer portal network](/caleb-chandler.github.io/assets/cfb/transfer_degree_distribution.png)
+![degree distribution of average transfer portal network](/assets/cfb/transfer_degree_distribution.png)
 
 The transfer portal is notable because its topology actually doesn't fit neatly into any particular “class.” Like a small-world network, it features an extremely short average path-length of about 3 steps between any two programs, but its low density and low clustering coefficient means it cannot form the dense, localized communities that usually define the small-world category.
 
 To find some clues as to why this may be, we can use the [Fruchterman-Reingold](https://karobben.github.io/2023/02/20/LearnNotes/fruchterman-reingold/) algorithm -- one of several "layout algorithms" used to visualize networks. It works by treating nodes as electrically-charged particles, pushing unconnected nodes apart and pulling connected ones together until an energy-minimizing "equilibrium" is reached. Applying this algorithm to our network and coloring the nodes by division (FBS blue, FCS green, lower divisions pink) reveals a major culprit behind its topology:
 
-![visualization of network, with higher divisions in middle and lower ones forming concentric circles around them](/caleb-chandler.github.io/assets\cfb\fr_bydiv_indegsize_white.png)
+![visualization of network, with higher divisions in middle and lower ones forming concentric circles around them](/assets/cfb/fr_bydiv_indegsize_white.png)
 
 There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a pattern where teams at higher levels engage in the portal at a significantly higher rate, which makes sense given that players' value on the market (not to mention the degree of priority they place on football) scales down with division.
 [explain how this explains the topology]
@@ -86,8 +86,8 @@ Calculating the centrality values for each node in the aggregated network, we ge
 
 ![described below](/caleb-chandler.github.io/assets\cfb\avg_pagerank_hits_network.png)
 
-This is a visual representation of the top 15 schools by each metric, upscaled and labeled. Metrics are calculated from the full network but the visualization algorithm was only run on the FBS subgraph, to improve readability (and so that the script could finish running before the sun enters its red giant phase).
-Because PageRank values a node based on the importance of its neighbors, it specifically highlights schools that take in players from other highly-connected, high-profile programs. This identifies the programs that have used the portal as a primary engine to completely overhaul their rosters with high-value talent in a very short window, which can be confirmed by a cursory glance and some prior knowledge about these programs' recent histories.
+This is a visual representation of the top 15 schools by each metric, upscaled and labeled. Metrics are calculated from the full network, but the visualization algorithm was only run on the FBS subgraph to improve readability (and so that the script could finish running before the sun enters its red giant phase).
+Because PageRank values a node based on the importance of its neighbors, it specifically highlights teams that take in players from other highly-connected, high-profile teams. This identifies the programs which have used the portal as a primary engine to completely overhaul their rosters with high-value talent in a very short window, which can be confirmed by a cursory glance and some prior knowledge about these programs' recent histories.
 The HITS Authority results, on the other hand, highlight programs with high "prestige" in the portal, that is ones which act moreso as ultimate endpoints. Schools high in Authority represent the premier destinations in the network. They are the schools that transferring players have collectively "voted" for as the primary landing spots.
 As you can see there are some schools, like Colorado and Ole Miss, that score highly on both metrics; these tend to be the programs with the most aggressive portal strategies over the past five seasons.
 
@@ -132,8 +132,9 @@ If we control for NPG and isolate the effect of NPV, however, we get this:
 
 ![scatter plot of efficiency residuals vs NPG](/caleb-chandler.github.io\assets\cfb\aggregated_portal_efficiency_by_division.png)
 
-This is a chart showing, on the x axis, average NPG, and on the y-axis the difference between expected value added (based on their NPG) and the actual value they did add. Schools are colored by division and the top/bottom 8 are labeled. 
-Interestingly, it seems to be stratified mostly within-FBS; P5/4 schools are generally getting more "bang for their buck" while G5/6 are getting less. This pattern notably holds more for G6 than P4, though. The top 8 are all P4, while the bottom 8 are evenly split, with Alabama and Georgia especially getting clobbered in the portal -- both by volume _and_ relative value.
+This is a chart showing, on the x-axis, average NPG, and on the y-axis the difference between expected value added (based on their NPG) and the actual value they did add. Schools are colored by division and the top/bottom 8 are labeled. 
+Interestingly, it seems to be stratified mostly within-FBS; P4 schools are generally getting more "bang for their buck" while G6 are getting less. T
+his pattern notably holds more for G6 than P4, though. The top 8 are all P4, while the bottom 8 are evenly split, with Alabama and Georgia especially getting clobbered in the portal -- both by volume _and_ relative value.
 
 <iframe 
   src="/caleb-chandler.github.io\assets\cfb\transfer_sankey_div.html" 
@@ -153,7 +154,7 @@ We can also look at in-degree and out-degree in isolation, allowing us to see wh
 
 ## IV. Interpretation (What effect has the portal actually had?)
 
-So what does this all mean? Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without the contribution of transfers like Fernando Mendoza and Elijah Sarratt. Similarly, Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (at the time of this writing) ever won a championship was 2001. So does the data agree with the gut in this case?
+So what does this all mean? Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without the likes of transfers Fernando Mendoza and Elijah Sarratt. Similarly, Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (at the time of this writing) ever won a championship was 2001. So does the data agree with the gut in this case?
 
 The results of our network analysis suggest that there are competing dynamics at play. Top recruits still cluster at a small number of elite programs, but now, with the advent of the portal, these programs can no longer hoard them several layers down on the depth chart. Since these players are still quite good, they are valuable on the market and well able to transfer elsewhere, which cannot necessarily be said for backups at lower-tier programs. Notwithstanding several notable exceptions, transfers are statistically far more likely to be moving _down_ than _up_; it's just that we don't hear about them as often.
 
@@ -170,7 +171,7 @@ Combined with the status of "mid-tier" programs as go-betweens for rising stars 
 
 So where does that leave us? On the one hand, we have NIL and the transfer portal, which both seem to be positive developments, and on the other we have realignment, which is most definitely a negative one. It's still hard to say how the overall balance of these changes will shake out, but at least as far as the portal is concerned, I think it's fair to say that we're now much closer to an answer.
 
-# (Bonus) The Recruiting Network: Visualizing Pipelines
+# The Recruiting Network: Visualizing Pipelines
 
 I promised I'd get to recruiting, so here we are. I must admit that I didn't end up getting to do nearly as much with this as I would have liked, but I was still able to obtain at least one very interesting result that, despite being secondary to the main project, I think is actually the most exciting one I got.
 As a reminder, the recruiting networks consist of teams that recruited from the same locations in the same year, with edges weighted by the number of times they did so.
@@ -202,4 +203,4 @@ What's striking here is just how _far apart_ the communities are. Generally when
 Looking at individual schools, we can see some interesting things as well. For instance, we can see that Iowa and Iowa State actually operate in entirely separate recruiting pipelines despite being less than 50 miles from eachother -- likely owing both to their central location and long period of playing in separate conferences. We can also see that Army, Northwestern, and Arkansas State occupy "broker" positions in-between communities, where they have the seemingly rare privilege of recruiting from both.
 I certainly expected to see _some_ meaningful communities when I ran this algorithm, but this is on another level. As far as I'm aware (though I may be wrong), this is the first time these particular communities have been discovered and visualized, which is really cool.
 
-So that's it; I hope you enjoyed, learned something, etc, etc. You can check out the project repo on my GitHub at https://github.com/caleb-chandler/cfb-player-acquisition-network.git. CFBD's terms and conditions prohibit me from publishing the data directly, but the code's all there to re-gather it with your own API key. If you decide to expand on the project, let me know! There's a ton more that could be done here and I'd love to see what else people think of.
+So that's it; I hope you enjoyed, learned something, etc, etc. If you'd like, you can check out the project repo on my [GitHub](https://github.com/caleb-chandler/cfb-player-acquisition-network.git). CFBD's terms and conditions prohibit me from publishing the data directly, but the code's all there to re-gather it with your own API key. If you decide to expand on the project, let me know! There's a ton more that could be done here and I'd love to see what else people think of.
