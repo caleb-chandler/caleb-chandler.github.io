@@ -27,19 +27,19 @@ author_profile: true
 ## Summary of Qualifications
 
 ### Education
-* **Northeastern University** | MS in Complex Network Analysis | GPA: 4.0 | [cite_start]Expected May 2027 [cite: 4, 5, 6, 14]
-* **Utah State University** | BS in Economics & Sociology (Dual Major) | August 2024 [cite: 7, 8, 15]
+* **Northeastern University** | MS in Complex Network Analysis | GPA: 4.0 | Expected May 2027
+* **Utah State University** | BS in Economics & Sociology (Dual Major) | August 2024 
 
 ### Research Interests
-* [cite_start]**Societal Evolution**: Quantitative modeling of social structures and societal scaling[cite: 16].
-* [cite_start]**Complex Systems**: Integration levels and emergent layers within complex systems[cite: 17, 18].
-* **Network Science**: Modeling the forces that determine how structure emerges in real-world networks[cite: 20].
+* **Societal Evolution**: Quantitative modeling of social structures and societal scaling.
+* **Complex Systems**: Integration levels and emergent layers within complex systems.
+* **Network Science**: Modeling the forces that determine how structure emerges in real-world networks.
 
 ### Experience
-* **Data Analyst Intern** | LiveFree Emergency Response | [cite_start]May 2025 – Aug 2025 [cite: 32, 35]
-* **AI Trainer - Statistics** | Outlier | [cite_start]Aug 2024 – May 2025 [cite: 39, 40, 42]
-* **Undergraduate Research Fellow** | The Center for Growth and Opportunity | Aug 2022 – May 2024 [cite: 22, 26]
+* **Data Analyst Intern** | LiveFree Emergency Response | May 2025 – Aug 2025 
+* **AI Trainer - Statistics** | Outlier | Aug 2024 – May 2025 
+* **Undergraduate Research Fellow** | The Center for Growth and Opportunity | Aug 2022 – May 2024 
 
 ### Technical Skills
-* [cite_start]**Programming & Tools**: Python, SQL, Jupyter Notebook, Git, Excel, Power BI, LaTeX[cite: 68].
-* [cite_start]**Analytical**: Probability and Statistics, Calculus, Linear Algebra, Graph Theory[cite: 70].
+* **Programming & Tools**: Python, SQL, Jupyter Notebook, Git, Excel, Power BI, LaTeX.
+* **Analytical**: Probability and Statistics, Calculus, Linear Algebra, Graph Theory.
