@@ -23,7 +23,12 @@ Before we begin, it will be prudent to give a brief rundown of what network scie
 
 At its core, network science is the study of _connectivity_. It moves the focus away from the individual characteristics of single entities and toward the relationships _between_ those entities, analyzing the resulting "whole" as one new, consolidated entity: a network, which encodes in its relationships a high-level description of the entire system.
 
-![image of a network](/assets/cfb/networkexample.jpg)
+{% include figure 
+   image_path="/assets/cfb/networkexample.png" 
+   alt="Example: a network map of the internet in 2005" 
+   caption="Example: a network map of the internet in 2005" 
+   align="center" 
+%}
 
 Networks are applications of [graph theory](https://en.wikipedia.org/wiki/Graph_theory) to the analysis of real-world systems. They are composed of nodes -- individual entities or elements -- and edges, the links between these nodes, which can be weighted by values representing the number of links between the same nodes, the "strength" of the links, or some other attribute. Edges can be either directed (meaning they "point" from one node to another) or undirected. Both nodes and edges can be imbued with any number of attributes. In the parlance of the field, "network" is often used interchangeably with "graph."
 Networks can also be bipartite, where nodes are given "classes" and nodes of one class can only connect with nodes of the other (used to model relationships like pollinator-plant, author-paper, etc). Bipartite networks can also be "projected" to turn them into a more traditional network isolating the nodes of either class, where edges between nodes in the projected network represent a node of the other class that they both share a link to in the original network (for instance, two genes that share an association with a particular disease).
@@ -40,13 +45,35 @@ What's more, even traditional recruiting can be represented as a network: a bipa
 
 ![visualization of portal for 2025](/assets/cfb/2025.png)
 
-Here, at long last, is the full picture of the transfer portal in all its glory -- in this case for the most recent year, 2025. Nodes are laid out geographically and sized/colored by their weighted degree (sum of the weight of their connections), so that higher-degree schools are larger and bluer. For the sake of readability, I've restricted labels to only the highest-degree schools.
+Here, at long last, is the full picture of the transfer portal in all its glory -- in this case for the most recent year, 2025. Nodes are laid out geographically and sized/colored by their weighted degree (sum of connections), so that higher-degree schools are larger and bluer. For the sake of readability, I've restricted labels to only the highest-degree schools.
 A couple fun things immediately stand out here: for instance, we can observe huge outflows from Marshall to Southern Miss and from South Dakota State to Washington State as a result of players following their coaches to new schools. We also observe that Purdue had an extremely turbulent year in the portal (high degree) following their abysmal 2-10 season and subsequent need to replace departing players. 
 Here are the other four seasons, arranged in order from earliest to latest.
 
-[]
+{% include figure 
+   image_path="/assets/cfb/2021.png" 
+   alt="2021 Transfer Portal Network" 
+   caption="2021: The first year of the one-time transfer rule." 
+%}
 
-The structure of a network is called its topology. In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by obtaining certain network statistics, such as degree (number of a node's connections), clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges in the network to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
+{% include figure 
+   image_path="/assets/cfb/2022.png" 
+   alt="2022 Transfer Portal Network" 
+   caption="2022: Rapid expansion of player movement." 
+%}
+
+{% include figure 
+   image_path="/assets/cfb/2023.png" 
+   alt="2023 Transfer Portal Network" 
+   caption="2023: The emergence of NIL-driven transfer cycles." 
+%}
+
+{% include figure 
+   image_path="/assets/cfb/2024.png" 
+   alt="2024 Transfer Portal Network" 
+   caption="2024: A fully matured transfer market." 
+%}
+
+The structure of a network is called its topology. In nature, there are certain patterns we generally observe in topologies, depending on the context of the network and the underlying process that created it. These patterns can be found by obtaining certain network statistics, such as degree, clustering coefficient (the percentage of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges in the network to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
 ![image of a small-world network](/assets/cfb/smallworld.jpg)
 
