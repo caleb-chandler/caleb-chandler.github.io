@@ -8,6 +8,7 @@ toc_sticky: true
 mathjax: true
 ---
 # Preface
+---
 College football, in my humble opinion, is the greatest sport on Earth. It can be hard to explain to people why the sport is so appealing to me even while I remain lukewarm on the NFL. Sure, on a personal level I was born into it, and I experienced some of my most cherished childhood memories at games, but more than that, there's a powerful, quintessentially American charm to college football that the NFL just doesn't have. The NFL is unapologetically a cynical commercial operation (which I suppose, in its own way, is also quintessentially American), and it receives the best players, but in exchange becomes sterile, corporate, and disengaged from the "common people." 
 
 College is different. The game is older here. It's realer. Rawer. More genuine. It's entangled intimately with identity: religious, regional, cultural, and socioeconomic. Family ties go back generations. You can grow up, as I did, in any far flung forgotten corner of the country, and still have a team to root for. It can be easy to forget that the very birth of football itself was a game between colleges.
@@ -24,6 +25,8 @@ The transfer portal in its current form began on April 28, 2021, when the NCAA r
 As for me, I saw it a little bit differently. I am, of course, a major college football fan, but I'm also a data analyst and a student of network science, and if there is one thing that the transfer portal _most definitely_ is, it's a _network_. Given my uniquely appropriate background, I would have been remiss if I did not take it upon myself to capitalize on that fact. Using the database and API provided by [CollegeFootballData.com](collegefootballdata.com){:target="_blank" rel="noopener"}, I was able to gather all the information I needed, convert it to network format, and -- with only a small amount of annoying cleanup required -- commence, to the best of my ability, with a comprehensive network analysis. What follows is the surprising, and fascinating, result.
 
 # Project Introduction + A Primer on Network Science
+
+---
 
 Before we begin, it will be prudent to give a brief rundown of what network science actually is for the uninitiated -- along with the meanings of some of its associated terms.
 
@@ -46,6 +49,8 @@ In the context of the transfer portal, the application is rather obvious. School
 What's more, even traditional recruiting can be represented as a network: a bipartite one, with schools on one side and recruit hometowns on the other. It can then be projected by school to identify shared recruiting grounds. In this case the usable data goes back much further (specifically to 2002). The recruiting network has some interesting findings, too -- including one especially cool one -- but we can save that for later. For now, we'll just focus on the portal.
 
 # Anatomy of the Transfer Network
+
+---
 
 ![visualization of portal for 2025](/assets/cfb/2025.png)
 
@@ -82,7 +87,7 @@ Here are the other four seasons, arranged in order from earliest to latest.
 The structure of a network is called its topology. In nature, there are certain patterns or "classes" we generally observe in topologies, depending on the context of the network and the underlying process that created it. These can be found by obtaining certain network statistics, such as degree, clustering coefficient (the proportion of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges in the network to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
 {% include figure 
-   image_path="/assets/cfb/smallworld.png" 
+   image_path="/assets/cfb/smallworld.jpg" 
    alt="Example of a small-world network topology" 
    caption="Example of a small-world network topology" 
 %}
@@ -97,7 +102,7 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 | Average Clustering Coefficient | 0.0585 |
 | Density | 0.0175 |
 
-And here is their average degree distribution, which follows a power law with scaling exponent $\alpha \approx 1.03$. This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at an orders-of-magnitude-higher rate than the average.
+And here is their average degree distribution, which follows a power law with scaling exponent \\( \alpha \approx 1.03 \\). This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at an orders-of-magnitude-higher rate than the average.
 
 ![degree distribution of average transfer portal network](/assets/cfb/transfer_degree_distribution.png)
 
