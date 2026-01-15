@@ -55,7 +55,9 @@ What's more, even traditional recruiting can be represented as a network: a bipa
 ![visualization of portal for 2025](/assets/cfb/2025.png)
 
 Here, at long last, is the full picture of the transfer portal in all its glory -- in this case for the most recent year, 2025. Nodes are laid out geographically and sized/colored by their weighted degree (sum of connections), so that higher-degree schools are larger and bluer. For the sake of readability, I've restricted labels to only the highest-degree schools.
+
 A couple fun things immediately stand out here: for instance, we can observe huge outflows from Marshall to Southern Miss and from South Dakota State to Washington State as a result of players following their coaches to new schools. We also observe that Purdue had an extremely turbulent year in the portal (high degree) following their abysmal 1-11 season and subsequent need to replace departing players. 
+
 Here are the other four seasons, arranged in order from earliest to latest.
 
 {% include figure 
@@ -87,7 +89,7 @@ Here are the other four seasons, arranged in order from earliest to latest.
 The structure of a network is called its topology. In nature, there are certain patterns or "classes" we generally observe in topologies, depending on the context of the network and the underlying process that created it. These can be found by obtaining certain network statistics, such as degree, clustering coefficient (the proportion of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges in the network to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
 {% include figure 
-   image_path="/assets/cfb/smallworld.jpg" 
+   image_path="/assets/cfb/smallworld.png" 
    alt="Example of a small-world network topology" 
    caption="Example of a small-world network topology" 
 %}
@@ -102,7 +104,7 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 | Average Clustering Coefficient | 0.0585 |
 | Density | 0.0175 |
 
-And here is their average degree distribution, which follows a power law with scaling exponent \\( \alpha \approx 1.03 \\). This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at an orders-of-magnitude-higher rate than the average.
+And here is their average degree distribution, which follows a power law with scaling exponent 1.03. This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at an orders-of-magnitude-higher rate than the average.
 
 ![degree distribution of average transfer portal network](/assets/cfb/transfer_degree_distribution.png)
 
@@ -114,7 +116,7 @@ To find some clues, we can use the [Fruchterman-Reingold](https://karobben.githu
 
 There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a pattern where teams at higher levels engage in the portal at a significantly higher rate, which makes sense given that players' value on the market (not to mention the degree of priority they place on football) scales down with division.
 
-This hierarchical arrangement allows us to confirm our topology: **core-periphery.** High-activity FBS programs at the center act as central hubs for the entire network, and because these "core" schools engage in the portal at such a high rate, they effectively collapse the distance between any two programs in the system. For example, a player might move from a D3 school to a mid-tier FCS program, while another moves from that same FCS program to a P4 powerhouse; this creates a path that connects the fringes to the summit in just two steps.
+This hierarchical arrangement allows us to confirm our topology: **core-periphery.** High-activity FBS programs at the center act as central hubs for the entire network, and because these "core" schools engage in the portal at such a high rate, they effectively collapse the distance between any two programs in the system. For example, a player might move from a D3 school to a mid-tier FCS program, while another moves from that same FCS program to a P4; this creates a path that connects the fringes to the summit in just two steps.
 This explains why the transfer portal has such a short average path length despite having virtually no clustering, and why its degree distribution is heavy-tailed.
 
 As for clustering, it is functionally nonexistent here because players select their next school based on factors that have nothing to do with their previous one (likely NIL, playing time, coach movement, etc.)
