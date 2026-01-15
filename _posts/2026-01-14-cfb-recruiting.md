@@ -9,7 +9,7 @@ College is different. The game is older here. It's realer. Rawer. More genuine. 
 But the sport is changing, and rapidly. Players can now be paid not only for their name and likeness (a development that frankly should have come much sooner), but even directly by schools themselves. The playoff was expanded from 4 to 12 teams. Conferences are no longer even nominally regional, but instead -- under pressure from TV networks -- have made the callous decision to expand wantonly with total disregard for the myriad cultural traditions that made the sport special to begin with, and, much like the sterile, corporate NFL, have thoroughly abandoned all pretense of existing for any other purpose than to maximize profit.
 
 Whether these developments, on balance, are good or bad for the sport depends on who you ask (if you're asking me, it's the latter), but there can be no doubt that American capitalism and its ever-insatiable appetite -- dutifully kept at arm's length for so long -- is finally beginning to break down the door. True, there was always money to be made in college football, and certainly quite a lot was even before these changes, but at the same time there was an unspoken understanding that what we had here was not just special, but fragile, and required a certain degree of protection from the outside world if its unique character -- and thereby its commercial value -- was to persist. That understanding is no more, and the current direction of the sport is putting that delicate balance on a knife's edge. As Michael MacKelvie puts it in [this fantastic video](https://www.youtube.com/watch?v=LhJlEId04oA),
-    "_every sport and business deals with its own pendulum of product and profit, and right now, the powers at play within college football are dropping an Acme anvil on the product._"
+> "_every sport and business deals with its own pendulum of product and profit, and right now, the powers at play within college football are dropping an Acme anvil on the product._"
 
 This is a story about just one of those developments, and perhaps the most polarizing one: **the transfer portal**. 
 
@@ -23,7 +23,7 @@ Before we begin, it will be prudent to give a brief rundown of what network scie
 
 At its core, network science is the study of _connectivity_. It moves the focus away from the individual characteristics of single entities and toward the relationships _between_ those entities, analyzing the resulting "whole" as one new, consolidated entity: a network, which encodes in its relationships a high-level description of the entire system.
 
-![image of a network](/assets/cfb/Network-visualization-illustration.jpg)
+![image of a network](/assets/cfb/networkexample.jpg)
 
 Networks are applications of [graph theory](https://en.wikipedia.org/wiki/Graph_theory) to the analysis of real-world systems. They are composed of nodes -- individual entities or elements -- and edges, the links between these nodes, which can be weighted by values representing the number of links between the same nodes, the "strength" of the links, or some other attribute. Edges can be either directed (meaning they "point" from one node to another) or undirected. Both nodes and edges can be imbued with any number of attributes. In the parlance of the field, "network" is often used interchangeably with "graph."
 Networks can also be bipartite, where nodes are given "classes" and nodes of one class can only connect with nodes of the other (used to model relationships like pollinator-plant, author-paper, etc). Bipartite networks can also be "projected" to turn them into a more traditional network isolating the nodes of either class, where edges between nodes in the projected network represent a node of the other class that they both share a link to in the original network (for instance, two genes that share an association with a particular disease).
@@ -84,7 +84,7 @@ In network science, we use a certain class of statistics -- called centrality me
 
 Calculating the centrality values for each node in the aggregated network, we get these results:
 
-![described below](/caleb-chandler.github.io/assets\cfb\avg_pagerank_hits_network.png)
+![described below](/assets/cfb/avg_pagerank_hits_network.png)
 
 This is a visual representation of the top 15 schools by each metric, upscaled and labeled. Metrics are calculated from the full network, but the visualization algorithm was only run on the FBS subgraph to improve readability (and so that the script could finish running before the sun enters its red giant phase).
 Because PageRank values a node based on the importance of its neighbors, it specifically highlights teams that take in players from other highly-connected, high-profile teams. This identifies the programs which have used the portal as a primary engine to completely overhaul their rosters with high-value talent in a very short window, which can be confirmed by a cursory glance and some prior knowledge about these programs' recent histories.
@@ -116,28 +116,28 @@ Here are the rankings, if you're interested.
 Since we are dealing with a directed network, we can take advantage of in-degree and out-degree (incoming vs outgoing transfers) to create two simple node-level metrics. We'll call them "Net Portal Gain" and "Net Portal Value," or NPG and NPV. NPG is just the net degree -- the number of in-transfers minus out-transfers for a node -- and NPV is the same but with player rating.
 This is the distribution of NPG for all five years.
 
-![distribution](/caleb-chandler.github.io/\assets\cfb\distribution_net_degree.png)
+![distribution](/assets/cfb/distribution_net_degree.png)
 
 When we isolate the top and bottom schools by aggregate (summed) NPG, we get something interesting.
 
-![table showing top and bottom schools](/caleb-chandler.github.io/assets\cfb\agg_nd.png)
+![table showing top and bottom schools](/assets/cfb/agg_nd.png)
 
 The bottom 15 is filled to the brim with _blue-bloods_, some of the most successful and prestigious programs of the past 25 years. These programs are being drained of players at an astounding rate. Meanwhile, the other side consists mainly of much-less-prestigious G6 schools which are happily profiting off the difference.
 
 As you may have already guessed, change in NPV is driven almost entirely by change in NPG. This is because the range of ratings is very tight, at 0.75-0.99, meaning most of the difference in raw NPV is being driven by pure volume.
 
-![scatter plot showing correlation](/caleb-chandler.github.io/\assets\cfb\scatter_net_degree_vs_npv.png)
+![scatter plot showing correlation](/assets/cfb/scatter_net_degree_vs_npv.png)
 
 If we control for NPG and isolate the effect of NPV, however, we get this:
 
-![scatter plot of efficiency residuals vs NPG](/caleb-chandler.github.io\assets\cfb\aggregated_portal_efficiency_by_division.png)
+![scatter plot of efficiency residuals vs NPG](/assets/cfb/aggregated_portal_efficiency_by_division.png)
 
 This is a chart showing, on the x-axis, average NPG, and on the y-axis the difference between expected value added (based on their NPG) and the actual value they did add. Schools are colored by division and the top/bottom 8 are labeled. 
 Interestingly, it seems to be stratified mostly within-FBS; P4 schools are generally getting more "bang for their buck" while G6 are getting less. T
 his pattern notably holds more for G6 than P4, though. The top 8 are all P4, while the bottom 8 are evenly split, with Alabama and Georgia especially getting clobbered in the portal -- both by volume _and_ relative value.
 
 <iframe 
-  src="/caleb-chandler.github.io\assets\cfb\transfer_sankey_div.html" 
+  src="/assets/cfb/transfer_sankey_div.html" 
   width="100%" 
   height="800px" 
   frameborder="0" 
@@ -145,12 +145,12 @@ his pattern notably holds more for G6 than P4, though. The top 8 are all P4, whi
 </iframe>
 
 These are Sankey diagrams, made for visualizing flow rates. Used here, they show all the journeys made by transferring players over the past five seasons by division. We can see that in general, lower divisions have more total inflow than outflow, while P4 shows the opposite. 
-    Here's a [link](/caleb-chandler.github.io/assets\cfb\sankey_conf.html) to a version that further subdivides by conference, if you'd like to check that out as well.
+> Here's a [link](/assets/cfb/sankey_conf.html) to a version that further subdivides by conference, if you'd like to check that out as well.
 Taken together, these charts reflect a pattern where (most) P4 programs trade **quantity for quality**, hemorrhaging a massive amount of volume while at the same time bringing in a small quantity of nevertheless elite talent.
 
 We can also look at in-degree and out-degree in isolation, allowing us to see who's gaining and losing the most in absolute terms without considering the ratio.
 
-![table of top schools by in-degree and out-degree](/caleb-chandler.github.io/assets\cfb\indeg_outdeg.png)
+![table of top schools by in-degree and out-degree](/assets/cfb/indeg_outdeg.png)
 
 ## IV. Interpretation (What effect has the portal actually had?)
 
@@ -158,13 +158,13 @@ So what does this all mean? Anecdotally, most of can just kind of "feel" that th
 
 The results of our network analysis suggest that there are competing dynamics at play. Top recruits still cluster at a small number of elite programs, but now, with the advent of the portal, these programs can no longer hoard them several layers down on the depth chart. Since these players are still quite good, they are valuable on the market and well able to transfer elsewhere, which cannot necessarily be said for backups at lower-tier programs. Notwithstanding several notable exceptions, transfers are statistically far more likely to be moving _down_ than _up_; it's just that we don't hear about them as often.
 
-![bar plot of in vs out by division](/caleb-chandler.github.io\assets\cfb\avg_degree_by_division_seaborn.png)
+![bar plot of in vs out by division](/assets/cfb/avg_degree_by_division_seaborn.png)
 
 To top it all off, we can do a quick, straightforward comparison to see directly how parity has changed since 2021. We can't use ratings for this because they remain static unless a player enters the portal (at which point they have a different meaning anyway), so we'll have to use the next best thing: PPA, or predicted points added, essentially an adaptation of baseball's EPA to a football context.
 PPA, unfortunately, can only be calculated for offensive skill players due to the notorious difficulty of quantitatively measuring performance for defensive players and linemen. This requires us to make the assumption that variance in performance (via PPA) for offensive skill players is proportional to variance in some hypothetical measure of "performance" for everyone else, or in other words that variance for skill players is representative of variance for all players. I think this is probably a reasonable assumption.
 Using PPA as a proxy for player quality and summing it for each team in each year, we can then take the coefficient of variation for each year and compare its values before vs. after the introduction of the portal. Doing this, we observe that parity does in fact seem to have increased since 2021.
 
-![img](/caleb-chandler.github.io\assets\cfb\parity_analysis.png)
+![img](/assets/cfb/parity_analysis.png)
 
 Of course, it's important to point out that the sample size of completed post-portal years is just 4, and there are confounding variables at play here -- most notably the other changes that happened concurrently -- but we have a good enough mechanistic explanation via the transfer portal to say that it is likely to be the primary factor. While top programs are still getting the very best -- and indeed may be getting even higher _top-end_ talent -- the difference in talent between the players they're losing and the players they're gaining is not enough to make up for the loss in volume. These programs always had the best players, but now their overall _share_ of the best players is smaller.
 Combined with the status of "mid-tier" programs as go-betweens for rising stars in lower divisions and FCS, the net effect of the portal seems to indeed be an increase in parity.
@@ -186,16 +186,16 @@ This one turned out to be more of a small-world topology, with high clustering a
 | Average Clustering Coefficient | 0.45 |
 | Density | 0.14 |
 
-![img](/caleb-chandler.github.io\assets\cfb\recruiting_degree_distribution.png)
+![img](/assets/cfb/recruiting_degree_distribution.png)
 
 Since this is a network with high clustering, we can do something really cool: _community detection_. Community detection is the practice of finding collections of nodes that cluster together in relatively siloed-off groups. The majority of algorithms used for this purpose work by maximizing, in some way or another, a metric called "modularity," which is essentially the difference between the number of edges you observe within a node grouping and the number you would expect to observe if the network were generated randomly.
 The [Louvain algorithm](https://en.wikipedia.org/wiki/Louvain_method) is one such method, and the one we will use here. It works by grouping nodes together until it can no longer increase the grouping's modularity score, then combining those groupings into one entity, treating them as "nodes," and applying the same process, alternating between stages until no further change can increase modularity. Applying it to our averaged network and again visualizing it with the Fruchterman Reingold algorithm, these are the communities that emerge:
 
-![img](/caleb-chandler.github.io\assets\cfb\average_communities_totalvolume_allnames.png)
+![img](/assets/cfb/average_communities_totalvolume_allnames.png)
 
 See anything? Let's try adding labels to the communities:
 
-![img](/caleb-chandler.github.io\assets\cfb\labeled.png)
+![img](/assets/cfb/labeled.png)
 
 What you're looking at is the physical manifestation of recruiting pipelines in "graph space," drawn from real-world data stretching back 24 years.
 Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which just happen to correspond almost perfectly with the two sides of the Mississippi River. 
