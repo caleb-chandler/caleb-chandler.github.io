@@ -37,6 +37,7 @@ At its core, network science is the study of _connectivity_. It moves the focus 
    alt="Example: a network map of the internet in 2005" 
    caption="Example: A network map of the Internet in 2005" 
    align="center" 
+   popup=true
 %}
 
 Networks are applications of [graph theory](https://en.wikipedia.org/wiki/Graph_theory){:target="_blank" rel="noopener"} to the analysis of real-world systems. They are composed of nodes -- individual entities or elements -- and edges, the links between these nodes, which can be weighted by values representing the number of links between the same nodes, the "strength" of the links, or some other attribute. Edges can be either directed (meaning they "point" from one node to another) or undirected. Both nodes and edges can be imbued with any number of attributes. In the parlance of the field, "network" is often used interchangeably with "graph."
@@ -53,7 +54,12 @@ What's more, even traditional recruiting can be represented as a network: a bipa
 
 ---
 
-![visualization of portal for 2025](/assets/cfb/2025.png)
+{% include figure 
+   image_path="/assets/cfb/2025.png" 
+   alt="visualization of portal for 2025" 
+   align="center" 
+   popup=true
+%}
 
 Here, at long last, is the full picture of the transfer portal in all its glory -- in this case for the most recent year, 2025. Nodes are laid out geographically and sized/colored by their weighted degree (sum of connections), so that higher-degree schools are larger and bluer. For the sake of readability, I've restricted labels to only the highest-degree schools.
 
@@ -65,24 +71,28 @@ Here are the other four seasons, arranged in order from earliest to latest.
    image_path="/assets/cfb/2021.png" 
    alt="2021 Transfer Portal Network" 
    caption="2021" 
+   popup=true
 %}
 
 {% include figure 
    image_path="/assets/cfb/2022.png" 
    alt="2022 Transfer Portal Network" 
    caption="2022" 
+   popup=true
 %}
 
 {% include figure 
    image_path="/assets/cfb/2023.png" 
    alt="2023 Transfer Portal Network" 
    caption="2023" 
+   popup=true
 %}
 
 {% include figure 
    image_path="/assets/cfb/2024.png" 
    alt="2024 Transfer Portal Network" 
    caption="2024" 
+   popup=true
 %}
 
 ## I. Topology (What kind of network is this?)
@@ -93,6 +103,7 @@ The structure of a network is called its topology. In nature, there are certain 
    image_path="/assets/cfb/smallworld.png" 
    alt="Example of a small-world network topology" 
    caption="Example of a small-world network topology" 
+   popup=true
 %}
 
 Here are some aggregated statistics for our transfer portal networks (calculated as averages of averages so as to avoid privileging years with more data):
@@ -107,13 +118,21 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 
 And here is their average weighted-degree distribution, which follows a power law with scaling exponent 1.03. This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at a much higher rate than average.
 
-![degree distribution of average transfer portal network](/assets/cfb/transfer_degree_distribution.png)
+{% include figure 
+   image_path="/assets/cfb/transfer_degree_distribution.png" 
+   alt="degree distribution of average transfer portal network" 
+   popup=true
+%}
 
 So what class is our transfer portal in? Like a small-world network, it features an extremely short average path-length of about 3 steps between any two programs, but its low density and low clustering coefficient means it cannot form the dense, localized communities that usually define the small-world class.
 
 To find some clues, we can use the [Fruchterman-Reingold](https://karobben.github.io/2023/02/20/LearnNotes/fruchterman-reingold/){:target="_blank" rel="noopener"} algorithm -- one of several "layout algorithms" used to visualize networks. It works by treating nodes as electrically-charged particles, pushing unconnected nodes apart and pulling connected ones together until an energy-minimizing "equilibrium" is reached. Applying this algorithm to our network and coloring the nodes by division (FBS blue, FCS green, lower divisions pink), we get this result:
 
-![visualization of network, with higher divisions in middle and lower ones forming concentric circles around them](/assets/cfb/fr_bydiv_indegsize_white.png)
+{% include figure 
+   image_path="/assets/cfb/fr_bydiv_indegsize_white.png" 
+   alt="visualization of network, with higher divisions in middle and lower ones forming concentric circles around them" 
+   popup=true
+%}
 
 There is a clear hierarchy between divisions, with D2 and D3 programs at the outer fringes of the network and FBS programs in the center. This reflects a pattern where teams at higher levels engage in the portal at a significantly higher rate, which makes sense given that players' value on the market (not to mention the degree of priority they place on football) scales down with division.
 
@@ -132,7 +151,11 @@ In network science, we use a certain class of statistics -- called centrality me
 
 Calculating the centrality values for each node in the aggregated network, we get these results:
 
-![described below](/assets/cfb/avg_pagerank_hits_network.png)
+{% include figure 
+   image_path="/assets/cfb/avg_pagerank_hits_network.png" 
+   alt="described below" 
+   popup=true
+%}
 
 This is a visual representation of the top 15 schools by each metric, upscaled and labeled. Metrics are calculated from the full network, but the visualization algorithm was only run on the FBS subgraph to improve readability (and so that the script could finish running before the sun enters its red giant phase).
 
@@ -162,22 +185,38 @@ Here are the rankings for the top 10, if you're interested.
 Since we are dealing with a directed network, we can take advantage of in-degree and out-degree (incoming vs outgoing transfers) to create two simple node-level metrics. We'll call them "Net Portal Gain" and "Net Portal Value," or NPG and NPV. NPG is just the net degree -- the number of in-transfers minus out-transfers for a node -- and NPV is the same but with player rating.
 This is the distribution of NPG for all five years.
 
-![distribution](/assets/cfb/distribution_net_degree.png)
+{% include figure 
+   image_path="/assets/cfb/distribution_net_degree.png" 
+   alt="distribution" 
+   popup=true
+%}
 
 When we isolate the top and bottom schools by aggregate (summed) NPG over the entirety of the portal's existence, we get something interesting.
 
-![table showing top and bottom schools](/assets/cfb/agg_nd.png)
+{% include figure 
+   image_path="/assets/cfb/agg_nd.png" 
+   alt="table showing top and bottom schools" 
+   popup=true
+%}
 
 The bottom 15 is filled to the brim with _blue-bloods_, some of the most successful and prestigious programs of the past 25 years. These programs are being drained of players at an astounding rate. Meanwhile, the other side consists mainly of much-less-prestigious G6 schools which are happily profiting off the difference.
 This is odd because it suggests at first glance that there may be some sort of inverse relationship between portal intake and program success. The answer is more nuanced, however, and we'll get to that soon.
 
 So what about NPV? As you may have already guessed, change in NPV is driven almost entirely by change in NPG. This is because the range of ratings is very tight, at 0.75-0.99, meaning most of the difference in raw NPV is being driven by pure volume.
 
-![scatter plot showing correlation](/assets/cfb/scatter_net_degree_vs_npv.png)
+{% include figure 
+   image_path="/assets/cfb/scatter_net_degree_vs_npv.png" 
+   alt="scatter plot showing correlation" 
+   popup=true
+%}
 
 If we control for NPG and isolate the effect of NPV, however, we get this:
 
-![scatter plot of efficiency residuals vs NPG](/assets/cfb/aggregated_portal_efficiency_by_division.png)
+{% include figure 
+   image_path="/assets/cfb/aggregated_portal_efficiency_by_division.png" 
+   alt="scatter plot of efficiency residuals vs NPG" 
+   popup=true
+%}
 
 This is a chart showing, on the x-axis, average NPG, and on the y-axis the difference between expected value added (based on their NPG) and the actual value they did add. Schools are colored by division and the top/bottom 8 are labeled. Interestingly, it seems to be stratified mostly within-FBS; P4 schools are generally getting more "bang for their buck" while G6 are getting less. 
 
@@ -199,7 +238,11 @@ Taken together, these charts reflect a pattern where (most) P4 programs trade **
 
 We can also look at in-degree and out-degree in isolation, allowing us to see who's gaining and losing the most in absolute terms without considering the ratio.
 
-![table of top schools by in-degree and out-degree](/assets/cfb/indeg_outdeg.png)
+{% include figure 
+   image_path="/assets/cfb/indeg_outdeg.png" 
+   alt="table of top schools by in-degree and out-degree" 
+   popup=true
+%}
 
 ## IV. Interpretation
 
@@ -207,7 +250,11 @@ So what does this all mean? Anecdotally, most of can just kind of "feel" that th
 
 The results of our network analysis suggest that there are competing dynamics at play. Top recruits still cluster at a small number of elite programs, but now, with the advent of the portal, these programs can no longer hoard them several layers down on the depth chart. Since these players are still quite good, they are valuable on the market and well able to transfer elsewhere, which cannot necessarily be said for backups at lower-tier programs. Notwithstanding several notable exceptions, transfers are statistically far more likely to be moving _down_ than _up_; it's just that we don't hear about them as often.
 
-![bar plot of in vs out by division](/assets/cfb/avg_degree_by_division_seaborn.png)
+{% include figure 
+   image_path="/assets/cfb/avg_degree_by_division_seaborn.png" 
+   alt="bar plot of in vs out by division" 
+   popup=true
+%}
 
 To top it all off, we can do a quick, straightforward comparison to see directly how parity has changed since 2021. We can't use ratings for this because they remain static unless a player enters the portal (at which point they have a different meaning anyway), so we'll have to use the next best thing: PPA, or predicted points added, essentially an adaptation of baseball's EPA to a football context.
 
@@ -215,7 +262,11 @@ PPA, unfortunately, can only be calculated for offensive skill players due to th
 
 Using PPA as a proxy for player quality and summing it for each team in each year, we can then take the coefficient of variation for each year and compare its values before vs. after the introduction of the portal. Doing this, we observe that parity does in fact seem to have increased since 2021.
 
-![img](/assets/cfb/parity_analysis.png)
+{% include figure 
+   image_path="/assets/cfb/parity_analysis.png" 
+   alt="img" 
+   popup=true
+%}
 
 Of course, it's important to point out that the sample size of completed post-portal years is just 4, and there are confounding variables at play here -- most notably the other changes that happened concurrently -- but we have a good enough mechanistic explanation via the transfer portal to say that it is likely to be the primary factor. While top programs are still getting the very best -- and indeed may be getting even higher _top-end_ talent -- the difference in talent between the players they're losing and the players they're gaining is not enough to make up for the loss in volume. These programs always had the best players, but now their overall _share_ of the best players is smaller.
 Combined with the status of "mid-tier" programs as go-betweens for rising stars in lower divisions and FCS, the net effect of the portal seems to indeed be an increase in parity.
@@ -242,17 +293,29 @@ This one turned out to be more of a small-world topology, with high clustering a
 | Average Clustering Coefficient | 0.45 |
 | Density | 0.14 |
 
-![img](/assets/cfb/recruiting_degree_distribution.png)
+{% include figure 
+   image_path="/assets/cfb/recruiting_degree_distribution.png" 
+   alt="img" 
+   popup=true
+%}
 
 Since this is a network with high clustering, we can do something really cool: _community detection_. Community detection is the practice of finding collections of nodes that cluster together in relatively siloed-off groups. The majority of algorithms used for this purpose work by maximizing, in some way or another, a metric called "modularity," which is essentially the difference between the number of edges you observe within a node grouping and the number you would expect to observe if the network were generated randomly.
 
 The [Louvain algorithm](https://en.wikipedia.org/wiki/Louvain_method){:target="_blank" rel="noopener"} is one such method, and the one we will use here. It works by grouping nodes together until it can no longer increase the grouping's modularity score, then combining those groupings into one entity, treating them as "nodes," and applying the same process, alternating between stages until no further change can increase modularity. Applying it to our averaged network and again visualizing it with the Fruchterman Reingold algorithm, these are the communities that emerge:
 
-![img](/assets/cfb/unlabeled.png)
+{% include figure 
+   image_path="/assets/cfb/unlabeled.png" 
+   alt="img" 
+   popup=true
+%}
 
 See anything? Let's try adding labels to the communities:
 
-![img](/assets/cfb/labeled.png)
+{% include figure 
+   image_path="/assets/cfb/labeled.png" 
+   alt="img" 
+   popup=true
+%}
 
 What you're looking at is the physical manifestation of recruiting pipelines in "graph space," drawn from real-world data stretching back 24 years.
 Not only do we observe four clear partitions, we can easily see -- thanks to our visualization algorithm -- that these four communities are in fact subregions of two highly-distinct pipelines, which just happen to correspond almost perfectly with the two sides of the Mississippi River. 
