@@ -40,6 +40,7 @@ At its core, network science is the study of _connectivity_. It moves the focus 
 %}
 
 Networks are applications of [graph theory](https://en.wikipedia.org/wiki/Graph_theory){:target="_blank" rel="noopener"} to the analysis of real-world systems. They are composed of nodes -- individual entities or elements -- and edges, the links between these nodes, which can be weighted by values representing the number of links between the same nodes, the "strength" of the links, or some other attribute. Edges can be either directed (meaning they "point" from one node to another) or undirected. Both nodes and edges can be imbued with any number of attributes. In the parlance of the field, "network" is often used interchangeably with "graph."
+
 Networks can also be bipartite, where nodes are given "classes" and nodes of one class can only connect with nodes of the other (used to model relationships like pollinator-plant, author-paper, etc). These networks can then be "projected" to turn them into a more traditional network isolating the nodes of either class, where edges between nodes in the projected network represent a node of the other class that they both share a link to in the original network (for instance, two genes that share an association with a particular disease).
 
 Network science, then, is a field united as much by methodology as it is subject matter. It's been used to study all sorts of subjects, ranging from [disease transmission](https://pubmed.ncbi.nlm.nih.gov/16849187/){:target="_blank" rel="noopener"} to the [global financial system](https://www.nature.com/articles/srep00541#Sec8){:target="_blank" rel="noopener"} to [synaptic connections between neurons in the brain](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.110.178101){:target="_blank" rel="noopener"}.
@@ -100,11 +101,11 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 | :--- | :--- |
 | Average Path Length | 3.046 |
 | Diameter | 6.8 |
-| Average Degree | 11.17 |
+| Average Weighted Degree | 11.17 |
 | Average Clustering Coefficient | 0.0585 |
 | Density | 0.0175 |
 
-And here is their average degree distribution, which follows a power law with scaling exponent 1.03. This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at an orders-of-magnitude-higher rate than the average.
+And here is their average weighted-degree distribution, which follows a power law with scaling exponent 1.03. This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at an orders-of-magnitude-higher rate than the average.
 
 ![degree distribution of average transfer portal network](/assets/cfb/transfer_degree_distribution.png)
 
