@@ -5,7 +5,7 @@ toc: true
 toc_label: "Post Navigation"
 toc_icon: "list"
 toc_sticky: true
-mathjax: true
+layout: wide
 ---
 # Preface
 ---
@@ -110,7 +110,7 @@ And here is their average degree distribution, which follows a power law with sc
 
 So what class is our transfer portal in? Like a small-world network, it features an extremely short average path-length of about 3 steps between any two programs, but its low density and low clustering coefficient means it cannot form the dense, localized communities that usually define the small-world class.
 
-To find some clues, we can use the [Fruchterman-Reingold](https://karobben.github.io/2023/02/20/LearnNotes/fruchterman-reingold/){:target="_blank" rel="noopener"} algorithm -- one of several "layout algorithms" used to visualize networks. It works by treating nodes as electrically-charged particles, pushing unconnected nodes apart and pulling connected ones together until an energy-minimizing "equilibrium" is reached. Applying this algorithm to our network and coloring the nodes by division (FBS blue, FCS green, lower divisions pink), we get this:
+To find some clues, we can use the [Fruchterman-Reingold](https://karobben.github.io/2023/02/20/LearnNotes/fruchterman-reingold/){:target="_blank" rel="noopener"} algorithm -- one of several "layout algorithms" used to visualize networks. It works by treating nodes as electrically-charged particles, pushing unconnected nodes apart and pulling connected ones together until an energy-minimizing "equilibrium" is reached. Applying this algorithm to our network and coloring the nodes by division (FBS blue, FCS green, lower divisions pink), we get this result:
 
 ![visualization of network, with higher divisions in middle and lower ones forming concentric circles around them](/assets/cfb/fr_bydiv_indegsize_white.png)
 
@@ -168,7 +168,7 @@ When we isolate the top and bottom schools by aggregate (summed) NPG over the en
 ![table showing top and bottom schools](/assets/cfb/agg_nd.png)
 
 The bottom 15 is filled to the brim with _blue-bloods_, some of the most successful and prestigious programs of the past 25 years. These programs are being drained of players at an astounding rate. Meanwhile, the other side consists mainly of much-less-prestigious G6 schools which are happily profiting off the difference.
-This is odd because it suggests at first glance like there may be some sort of inverse relationship between portal intake and program success. The answer is more nuanced, however, and we'll get to that soon.
+This is odd because it suggests at first glance that there may be some sort of inverse relationship between portal intake and program success. The answer is more nuanced, however, and we'll get to that soon.
 
 So what about NPV? As you may have already guessed, change in NPV is driven almost entirely by change in NPG. This is because the range of ratings is very tight, at 0.75-0.99, meaning most of the difference in raw NPV is being driven by pure volume.
 
