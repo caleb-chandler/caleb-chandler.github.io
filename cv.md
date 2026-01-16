@@ -24,7 +24,7 @@ author_profile: true
 
 ---
 
-## Summary of Qualifications
+## Summary
 
 ### Education
 * **Northeastern University** | MS in Complex Network Analysis | GPA: 4.0 | Expected May 2027

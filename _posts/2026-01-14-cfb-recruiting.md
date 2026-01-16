@@ -1,11 +1,10 @@
 ---
-layout: single
+layout: wide
 title: "The Transfer Portal: Visualized -- A College Football Network Analysis"
 toc: true
 toc_label: "Post Navigation"
 toc_icon: "list"
 toc_sticky: true
-layout: wide
 ---
 # Preface
 ---
