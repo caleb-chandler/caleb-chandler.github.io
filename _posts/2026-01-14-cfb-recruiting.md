@@ -101,7 +101,7 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 | :--- | :--- |
 | Average Path Length | 3.046 |
 | Diameter | 6.8 |
-| Average Weighted Degree | 11.17 |
+| Average Degree | 11.17 |
 | Average Clustering Coefficient | 0.0585 |
 | Density | 0.0175 |
 
