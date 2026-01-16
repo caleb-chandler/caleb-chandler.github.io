@@ -89,7 +89,7 @@ Here are the other four seasons, arranged in order from earliest to latest.
 The structure of a network is called its topology. In nature, there are certain patterns or "classes" we generally observe in topologies, depending on the context of the network and the underlying process that created it. These can be found by obtaining certain network statistics, such as degree, clustering coefficient (the proportion of a node's neighbors that are also neighbors themselves), density (the ratio of possible edges in the network to existing ones), and so on. For example, when a network is highly clustered and has a short average path-length (technically average _shortest_ path-length) between any two given nodes, we categorize it as "small-world." Small-world topologies are especially common in social networks, where the probability of two contacts being contacts themselves is relatively high. This creates a highly modular system comprised of many distinct clusters (if you've ever read "_The Strength Of Weak Ties_," this is basically what that book is about).
 
 {% include figure 
-   image_path="/assets/cfb/smallworld.jpg" 
+   image_path="/assets/cfb/smallworld.png" 
    alt="Example of a small-world network topology" 
    caption="Example of a small-world network topology" 
 %}
@@ -141,7 +141,7 @@ The HITS Authority results, on the other hand, highlight programs with high "pre
 
 As you can see there are some schools, like Colorado and Ole Miss, that score highly on both metrics; these tend to be the programs with the most aggressive portal strategies over the past five seasons.
 
-Here's the top 10, if you're interested.
+Here are the actual rankings for the top 10, if you're interested.
 
 |   Rank | PageRank School   |   PR Score | HITS Authority School   |   HITS Score |
 |-------:|:------------------|-----------:|:------------------------|-------------:|
@@ -179,6 +179,7 @@ If we control for NPG and isolate the effect of NPV, however, we get this:
 ![scatter plot of efficiency residuals vs NPG](/assets/cfb/aggregated_portal_efficiency_by_division.png)
 
 This is a chart showing, on the x-axis, average NPG, and on the y-axis the difference between expected value added (based on their NPG) and the actual value they did add. Schools are colored by division and the top/bottom 8 are labeled. Interestingly, it seems to be stratified mostly within-FBS; P4 schools are generally getting more "bang for their buck" while G6 are getting less. 
+
 This pattern notably holds more for G6 than P4, though. The top 8 are all P4, while the bottom 8 are evenly split -- with Alabama and Georgia, especially, getting clobbered in the portal both by volume _and_ relative value.
 
 Let's try digging some more into that NPG result from earlier.
@@ -191,7 +192,7 @@ Let's try digging some more into that NPG result from earlier.
   scrolling="no">
 </iframe>
 
-This is a Sankey diagram, made for visualizing flow rates. Used here, it shows all the journeys made by transferring players over the past five seasons by division. We can see that in general, lower divisions have more total inflow than outflow, while P4 shows the opposite. Here's a [link](/assets/cfb/sankey_conf.html){:target="_blank" rel="noopener"} to a version that further subdivides by conference, if you'd like to check that out as well.
+This is a Sankey diagram, made for visualizing flow rates. Used here, it shows all the journeys made by transferring players over the past five seasons by division. We can see that in general, lower divisions have more total inflow than outflow, while P4 shows the opposite (Here's a [link](/assets/cfb/sankey_conf.html){:target="_blank" rel="noopener"} to a version that further subdivides by conference, if you'd like to check that out as well).
 
 Taken together, these charts reflect a pattern where (most) P4 programs trade **quantity for quality**, hemorrhaging a massive amount of volume while at the same time bringing in a small quantity of nevertheless elite talent.
 
@@ -201,7 +202,7 @@ We can also look at in-degree and out-degree in isolation, allowing us to see wh
 
 ## IV. Interpretation
 
-So what does this all mean? Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without the likes of transfers Fernando Mendoza and Elijah Sarratt. Similarly, Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (at the time of this writing) ever won a championship was 2001. So does the data agree with the gut in this case?
+So what does this all mean? Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without the likes of transfers Fernando Mendoza and Elijah Sarratt. Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (at the time of this writing) ever won a championship was 2001. So does the data agree with the gut in this case?
 
 The results of our network analysis suggest that there are competing dynamics at play. Top recruits still cluster at a small number of elite programs, but now, with the advent of the portal, these programs can no longer hoard them several layers down on the depth chart. Since these players are still quite good, they are valuable on the market and well able to transfer elsewhere, which cannot necessarily be said for backups at lower-tier programs. Notwithstanding several notable exceptions, transfers are statistically far more likely to be moving _down_ than _up_; it's just that we don't hear about them as often.
 
