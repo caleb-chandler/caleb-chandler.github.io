@@ -105,7 +105,7 @@ Here are some aggregated statistics for our transfer portal networks (calculated
 | Average Clustering Coefficient | 0.0585 |
 | Density | 0.0175 |
 
-And here is their average weighted-degree distribution, which follows a power law with scaling exponent 1.03. This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at an orders-of-magnitude-higher rate than the average.
+And here is their average weighted-degree distribution, which follows a power law with scaling exponent 1.03. This indicates a "heavy-tailed" distribution where the vast majority of programs have very few transfers, but a small number of high-activity ones engage in the portal at a much higher rate than average.
 
 ![degree distribution of average transfer portal network](/assets/cfb/transfer_degree_distribution.png)
 
@@ -142,7 +142,7 @@ The HITS Authority results, on the other hand, highlight programs with high "pre
 
 As you can see there are some schools, like Colorado and Ole Miss, that score highly on both metrics; these tend to be the programs with the most aggressive portal strategies over the past five seasons.
 
-Here are the actual rankings for the top 10, if you're interested.
+Here are the rankings for the top 10, if you're interested.
 
 |   Rank | PageRank School   |   PR Score | HITS Authority School   |   HITS Score |
 |-------:|:------------------|-----------:|:------------------------|-------------:|
@@ -209,8 +209,6 @@ The results of our network analysis suggest that there are competing dynamics at
 
 ![bar plot of in vs out by division](/assets/cfb/avg_degree_by_division_seaborn.png)
 
-On top of this, it could also be the case that top programs are better able to replace lost production via simple recruiting, making them less reliant on the portal overall.
-
 To top it all off, we can do a quick, straightforward comparison to see directly how parity has changed since 2021. We can't use ratings for this because they remain static unless a player enters the portal (at which point they have a different meaning anyway), so we'll have to use the next best thing: PPA, or predicted points added, essentially an adaptation of baseball's EPA to a football context.
 
 PPA, unfortunately, can only be calculated for offensive skill players due to the notorious difficulty of quantitatively measuring performance for defensive players and linemen. This requires us to make the assumption that variance in performance (via PPA) for offensive skill players is proportional to variance in some hypothetical measure of "performance" for everyone else, or in other words that variance for skill players is representative of variance for all players. I think this is probably a reasonable assumption.
@@ -222,9 +220,9 @@ Using PPA as a proxy for player quality and summing it for each team in each yea
 Of course, it's important to point out that the sample size of completed post-portal years is just 4, and there are confounding variables at play here -- most notably the other changes that happened concurrently -- but we have a good enough mechanistic explanation via the transfer portal to say that it is likely to be the primary factor. While top programs are still getting the very best -- and indeed may be getting even higher _top-end_ talent -- the difference in talent between the players they're losing and the players they're gaining is not enough to make up for the loss in volume. These programs always had the best players, but now their overall _share_ of the best players is smaller.
 Combined with the status of "mid-tier" programs as go-betweens for rising stars in lower divisions and FCS, the net effect of the portal seems to indeed be an increase in parity.
 
-So there you have it. The transfer portal is often derided as a degradation of the sport, but the analysis of its network tells a different story: one of a system finally finding its equilibrium. The transfer portal has acted to "lube up the gears" of an old, rusted machine, allowing freer circulation and clearing buildups that previously stood in the way of new teams trying to rise to the top.
+So there you have it. The transfer portal is often derided as a degradation of the sport, but the analysis of its network tells a different story: one of a system finally finding its equilibrium. The portal has acted to "unclog" the talent distribution, allowing freer circulation and clearing buildups that previously stood in the way of new teams rising to the top.
 
-Now, we remain at a crossroads. The portal has clearly been a positive influence, but the sledgehammer of realignment is a heavy weight to bear on the other end of that scale. The answer as to where the balance will land is still foggy, but we can no longer say the portal is contributing to its downfall; in fact, it may turn out to be the most important counterweight we have.
+We remain at a crossroads. The portal has clearly been a positive influence, but the sledgehammer of realignment is a heavy weight to bear on the other end of that scale. The answer as to where the balance of will ultimately land for college football is still foggy, but we can no longer say the portal is contributing to its downfall; in fact, it may turn out to be the most important counterweight we have.
 
 ---
 
