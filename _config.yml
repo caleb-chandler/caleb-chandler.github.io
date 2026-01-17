@@ -127,7 +127,7 @@ author:
       # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url: "https://x.com/caleb__ch"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
@@ -150,6 +150,9 @@ footer:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/caleb-chandler"
+      label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://x.com/caleb__ch"
   since: "2025"
 
 

@@ -6,6 +6,8 @@ toc_label: "Post Navigation"
 toc_icon: "list"
 toc_sticky: true
 author_profile: true
+header:
+  og_image: /assets/cfb/2025.png
 ---
 # Preface
 ---
