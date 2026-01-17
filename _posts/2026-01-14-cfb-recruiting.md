@@ -197,7 +197,7 @@ When we isolate the top and bottom schools by aggregate (summed) NPG over the en
    popup=true
 %}
 
-The bottom 15 is filled to the brim with _blue-bloods_, some of the most successful and prestigious programs of the past 25 years. These programs are being drained of players at an astounding rate. Meanwhile, the other side consists mainly of much-less-prestigious G6 schools which are happily profiting off the difference.
+The bottom 15 is filled to the brim with _blue-bloods_, some of the most successful and prestigious programs of the past 25 years. These programs are being drained of players at an astounding rate. Meanwhile, the other side consists mainly of much-less-prestigious G6 schools which are happily soaking up the difference.
 This is odd because it suggests at first glance that there may be some sort of inverse relationship between portal intake and program success. The answer is more nuanced, however, and we'll get to that soon.
 
 So what about NPV? As you may have already guessed, change in NPV is driven almost entirely by change in NPG. This is because the range of ratings is very tight, at 0.75-0.99, meaning most of the difference in raw NPV is being driven by pure volume.
@@ -218,7 +218,7 @@ If we control for NPG and isolate the effect of NPV, however, we get this:
 
 This is a chart showing, on the x-axis, average NPG, and on the y-axis the difference between expected value added (based on their NPG) and the actual value they did add. Schools are colored by division and the top/bottom 8 are labeled. Interestingly, it seems to be stratified mostly within-FBS; P4 schools are generally getting more "bang for their buck" while G6 are getting less. 
 
-This pattern notably holds more for G6 than P4, though. The top 8 are all P4, while the bottom 8 are evenly split -- with Alabama and Georgia, especially, getting clobbered in the portal both by volume _and_ relative value.
+This pattern notably holds more for P4 than G6, though. The top 8 are all P4, while the bottom 8 are evenly split -- with Alabama and Georgia, especially, getting clobbered in the portal both by volume _and_ relative value.
 
 Let's try digging some more into that NPG result from earlier.
 
