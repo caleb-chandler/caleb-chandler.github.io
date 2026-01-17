@@ -2,3 +2,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var links = document.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].hostname !== window.location.hostname) {
+        links[i].target = '_blank';
+        links[i].rel = 'noopener';
+      }
+    }
+  });
+</script>
