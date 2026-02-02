@@ -165,7 +165,7 @@ The HITS Authority results, on the other hand, highlight programs with high "pre
 
 As you can see there are some schools, like Colorado and Ole Miss, that score highly on both metrics; these tend to be the programs with the most aggressive portal strategies over the past five seasons.
 
-Here are the rankings for the top 10, if you're interested.
+Here are the rankings for the top 10.
 
 |   Rank | PageRank School   |   PR Score | HITS Authority School   |   HITS Score |
 |-------:|:------------------|-----------:|:------------------------|-------------:|
@@ -246,7 +246,7 @@ We can also look at in-degree and out-degree in isolation, allowing us to see wh
 
 ## IV. Interpretation
 
-So what does this all mean? Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without the likes of transfers Fernando Mendoza and Elijah Sarratt. Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (at the time of this writing) ever won a championship was 2001. So does the data agree with the gut in this case?
+So what does this all mean? Anecdotally, most of can just kind of "feel" that there's more parity now than there used to be. Indiana's meteoric ascent would not have been possible without transfers like Fernando Mendoza and Elijah Sarratt. Vanderbilt's sudden and remarkable rise from the depths of mediocrity was spearheaded by quarterback Diego Pavia, another transfer. The last time any of the four teams remaining in the playoff (at the time of this writing) ever won a championship was 2001. So does the data agree with the gut in this case?
 
 The results of our network analysis suggest that there are competing dynamics at play. Top recruits still cluster at a small number of elite programs, but now, with the advent of the portal, these programs can no longer hoard them several layers down on the depth chart. Since these players are still quite good, they are valuable on the market and well able to transfer elsewhere, which cannot necessarily be said for backups at lower-tier programs. Notwithstanding several notable exceptions, transfers are statistically far more likely to be moving _down_ than _up_; it's just that we don't hear about them as often.
 
