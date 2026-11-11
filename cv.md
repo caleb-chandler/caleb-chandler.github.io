@@ -32,7 +32,7 @@ author_profile: true
 
 ### Research Interests
 * **Societal Evolution**: Quantitative modeling of social structures and societal scaling.
-* **Collective Computation**: Group-level information processing, transmission, and storage
+* **Collective Cognition**: Group-level information processing, transmission, and storage
 * **Network Science**: Modeling the forces that determine how structure emerges in real-world networks.
 
 ### Experience
